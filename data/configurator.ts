@@ -4,7 +4,7 @@ export const brand = {
   name: 'Maas en Waal',
   suffix: 'Zonwering · Rolluiken · Horren',
   tagline: 'Van Heerewaarden tot Ewijk',
-  founder: 'ADviba',
+  founder: 'adviba',
   founderRole: 'Specialist uit de streek',
   domains: [
     'maasenwaalzonwering.nl',
@@ -12,8 +12,17 @@ export const brand = {
     'maasenwaalhorren.nl',
   ],
   helpLabel: 'Persoonlijk advies',
-  helpCta: 'Bel ADviba',
-  helpPhone: '+31 (0)6 12 34 56 78',
+  helpCta: 'Bel adviba',
+  // Contactgegevens van adviba (bron: adviba.nl/contact)
+  helpPhone: '+31 (0)6 10 26 00 00',
+  helpPhoneHref: 'tel:+31610260000',
+  email: 'info@adviba.nl',
+  address: 'Expeditieweg 10-14',
+  postalCity: '6657 KL Boven-Leeuwen',
+  hours: 'Ma t/m vr 09:00 – 17:00',
+  showroom: 'Showroom elke donderdag op afspraak',
+  appointmentUrl: 'https://www.adviba.nl/book-appointment/',
+  website: 'https://www.adviba.nl',
 };
 
 /**
@@ -421,7 +430,7 @@ export const copy = {
   step3: {
     title: 'Wat zijn ongeveer de afmetingen?',
     subtitle:
-      'Een exacte inmeting doet ADviba later gratis bij jou thuis in de streek.',
+      'Een exacte inmeting doet adviba later gratis bij jou thuis in de streek.',
   },
   step4: {
     title: 'Maak je configuratie compleet',
@@ -430,7 +439,7 @@ export const copy = {
   step5: {
     title: 'Jouw prijsindicatie is klaar',
     subtitle:
-      'Op basis van jouw keuzes ligt de verwachte investering rond dit bedrag. ADviba kijkt persoonlijk met je mee.',
+      'Op basis van jouw keuzes ligt de verwachte investering rond dit bedrag. adviba kijkt persoonlijk met je mee.',
   },
   summary: {
     title: 'Jouw configuratie',
@@ -439,7 +448,7 @@ export const copy = {
     incl: 'Incl. btw',
   },
   success: {
-    title: 'Gelukt — ADviba neemt persoonlijk contact op.',
-    body: 'Je aanvraag staat klaar. Als lokale streekspecialist plant ADviba doorgaans binnen één werkdag een gratis inmeting bij jou thuis in.',
+    title: 'Gelukt — adviba neemt persoonlijk contact op.',
+    body: 'Je aanvraag staat klaar. Als lokale streekspecialist plant adviba doorgaans binnen één werkdag een gratis inmeting bij jou thuis in.',
   },
 };

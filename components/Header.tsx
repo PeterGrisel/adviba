@@ -40,7 +40,7 @@ export function Header() {
             {brand.tagline}
           </span>
           <a
-            href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
+            href={brand.helpPhoneHref}
             aria-label={brand.helpCta}
             className="group inline-flex h-10 w-10 flex-none items-center justify-center gap-2 rounded-full border border-accent-bright/50 bg-dark-deep sm:h-auto sm:w-auto sm:px-3.5 sm:py-2 text-[13px] text-dark-fg transition-all hover:border-accent-bright hover:shadow-warm"
           >

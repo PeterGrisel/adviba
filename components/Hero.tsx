@@ -30,7 +30,7 @@ const slides: Slide[] = [
     subLabel: 'Comfort voor elk seizoen',
     headlinePrefix: 'Van zon naar',
     headlineAccent: 'comfort.',
-    body: 'Screens, uitvalschermen en markiezen — geleverd en gemonteerd door ADviba, jouw specialist tussen Heerewaarden en Ewijk.',
+    body: 'Screens, uitvalschermen en markiezen — geleverd en gemonteerd door adviba, jouw specialist tussen Heerewaarden en Ewijk.',
     image: imageSrc('waal-beneden-leeuwen'),
     colorClass: 'text-accent-bright',
     bgClass: 'bg-accent-bright',
@@ -41,7 +41,7 @@ const slides: Slide[] = [
     subLabel: 'Veilig, koel en rustig',
     headlinePrefix: 'Meer dan alleen',
     headlineAccent: 'privacy.',
-    body: 'Rolluiken die je woning verduisteren, isoleren en beschermen. Op maat gemaakt door ADviba, lokaal geïnstalleerd in Maas en Waal.',
+    body: 'Rolluiken die je woning verduisteren, isoleren en beschermen. Op maat gemaakt door adviba, lokaal geïnstalleerd in Maas en Waal.',
     image: imageSrc('waaldijk-dreumel'),
     colorClass: 'text-brand-orange',
     bgClass: 'bg-brand-orange',
@@ -52,7 +52,7 @@ const slides: Slide[] = [
     subLabel: 'Frisse lucht, zonder ongedierte',
     headlinePrefix: 'Frisse lucht zonder',
     headlineAccent: 'ongedierte.',
-    body: 'Horren die passen bij elk raam of deur — muggen buiten, daglicht binnen. ADviba plaatst ze bij je thuis in de streek.',
+    body: 'Horren die passen bij elk raam of deur — muggen buiten, daglicht binnen. adviba plaatst ze bij je thuis in de streek.',
     image: imageSrc('dreumelsche-waard'),
     colorClass: 'text-brand-green',
     bgClass: 'bg-brand-green',
@@ -151,7 +151,7 @@ export function Hero() {
 
       </div>
 
-      {/* Top-right: onderdeel van ADviba */}
+      {/* Top-right: onderdeel van adviba */}
       <div className="pointer-events-none absolute right-5 top-5 hidden md:block md:right-8">
         <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5">
           <span className="text-[11px] uppercase tracking-[0.16em] text-dark-fg/75">
@@ -225,12 +225,12 @@ export function Hero() {
                 />
               </a>
               <a
-                href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
+                href={brand.helpPhoneHref}
                 className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-dark-deep/70 px-5 text-[15px] font-medium text-dark-fg transition-colors hover:border-white"
               >
                 <PhoneCall className="h-3.5 w-3.5" strokeWidth={1.75} />
                 <span className="sm:hidden">Bel</span>
-                <span className="hidden sm:inline">of bel ADviba</span>
+                <span className="hidden sm:inline">of bel adviba</span>
               </a>
             </div>
           </motion.div>

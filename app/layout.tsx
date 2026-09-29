@@ -5,7 +5,7 @@ import { SmoothScroll } from '@/components/SmoothScroll';
 export const metadata: Metadata = {
   title: 'Maas en Waal Zonwering & Rolluiken — configureer online',
   description:
-    'Streekspecialist voor zonwering, rolluiken en terrasoverkappingen. Van Heerewaarden tot Ewijk. Prijsindicatie in 2 minuten. Persoonlijk advies van ADviba.',
+    'Streekspecialist voor zonwering, rolluiken en terrasoverkappingen. Van Heerewaarden tot Ewijk. Prijsindicatie in 2 minuten. Persoonlijk advies van adviba.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
+import { ArrowRight, CalendarDays, Clock, MapPin, Phone, Mail } from 'lucide-react';
 import { brand, region } from '@/data/configurator';
 import { AdvibaLogo } from './AdvibaLogo';
 import { useBrandTheme } from './BrandTheme';
@@ -18,14 +18,14 @@ export function RegionFooter() {
   const { markInteracted, requestProduct } = useBrandTheme();
   return (
     <footer>
-      {/* Amber CTA-band — ADviba stijl */}
+      {/* Amber CTA-band — adviba stijl */}
       <a
-        href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
+        href={brand.helpPhoneHref}
         className="group block bg-accent-bright transition-[background-color,filter] duration-500 hover:brightness-110"
       >
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 px-5 py-4 text-center md:px-8 md:py-5">
           <span className="font-display text-[16px] font-semibold text-dark md:text-[19px]">
-            Op zoek naar persoonlijk advies uit de streek? Bel ADviba.
+            Op zoek naar persoonlijk advies uit de streek? Bel adviba.
           </span>
           <ArrowRight
             className="hidden h-5 w-5 flex-none text-dark transition-transform group-hover:translate-x-0.5 md:block"
@@ -86,12 +86,12 @@ export function RegionFooter() {
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-dark-fg-muted">
                 Op zoek naar zonwering in huis of zonwering buiten zoals rolluiken of
                 screens? Als lokale streekspecialist tussen Heerewaarden en Ewijk zit{' '}
-                <span className="text-dark-fg">ADviba</span> altijd om de hoek.
+                <span className="text-dark-fg">adviba</span> altijd om de hoek.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 text-[15px]">
                 <a
-                  href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
+                  href={brand.helpPhoneHref}
                   className="group inline-flex items-center gap-3 text-dark-fg transition-colors hover:text-accent-bright"
                 >
                   <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent-bright text-dark transition-transform group-hover:scale-105">
@@ -100,15 +100,42 @@ export function RegionFooter() {
                   {brand.helpPhone}
                 </a>
                 <a
-                  href="mailto:advies@maasenwaalzonwering.nl"
+                  href={`mailto:${brand.email}`}
                   className="group inline-flex items-center gap-3 text-dark-fg transition-colors hover:text-accent-bright"
                 >
                   <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent-bright text-dark transition-transform group-hover:scale-105">
                     <Mail className="h-4 w-4" strokeWidth={2.25} />
                   </span>
-                  advies@maasenwaalzonwering.nl
+                  {brand.email}
                 </a>
               </div>
+
+              <ul className="mt-6 space-y-2.5 text-[14px] text-dark-fg/80">
+                <li className="flex items-start gap-2.5">
+                  <MapPin className="mt-0.5 h-4 w-4 flex-none text-accent-bright" strokeWidth={1.75} />
+                  <span>
+                    {brand.address}, {brand.postalCity}
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Clock className="mt-0.5 h-4 w-4 flex-none text-accent-bright" strokeWidth={1.75} />
+                  <span>
+                    {brand.hours}
+                    <br />
+                    {brand.showroom}
+                  </span>
+                </li>
+              </ul>
+
+              <a
+                href={brand.appointmentUrl}
+                target="_blank"
+                rel="noopener"
+                className="mt-6 inline-flex h-11 items-center gap-2 rounded-full border border-accent-bright/60 px-5 text-[14px] font-medium text-dark-fg transition-colors hover:border-accent-bright hover:bg-accent-bright hover:text-dark"
+              >
+                <CalendarDays className="h-4 w-4" strokeWidth={1.75} />
+                Plan een showroombezoek
+              </a>
             </div>
 
             {/* Kolom 2 — service & producten */}

@@ -6,7 +6,7 @@ import { brand } from '@/data/configurator';
 import { imageSrc } from '@/lib/remoteImages';
 
 /**
- * Het ADviba-logo op een lichte plaat, zodat het op donkere vlakken leesbaar
+ * Het adviba-logo op een lichte plaat, zodat het op donkere vlakken leesbaar
  * blijft. Laadt het logo niet, dan valt het terug op de woordnaam.
  */
 export function AdvibaLogo({ className = 'h-5' }: { className?: string }) {

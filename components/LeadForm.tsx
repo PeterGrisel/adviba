@@ -97,7 +97,7 @@ export function LeadForm({ onSubmit, onBack }: Props) {
           className="mt-0.5 h-4 w-4 accent-[rgb(var(--color-accent))]"
         />
         <span className="text-[14px] leading-relaxed text-ink">
-          Ik ga akkoord dat ADviba contact met mij opneemt over deze configuratie.
+          Ik ga akkoord dat adviba contact met mij opneemt over deze configuratie.
           {errors.consent && (
             <span className="mt-1 block text-[12px] text-[#B4463B]">{errors.consent}</span>
           )}
