@@ -8,6 +8,7 @@ import { siteName, siteUrl } from '@/lib/site';
  */
 export function StructuredData() {
   const businessId = `${siteUrl}/#adviba`;
+  const brandLabels = ['Maas en Waal Zonwering', 'Maas en Waal Rolluiken', 'Maas en Waal Horren'];
   const areaServed = region.villages.map((name) => ({ '@type': 'City', name }));
 
   const graph = [
@@ -15,6 +16,9 @@ export function StructuredData() {
       '@type': 'HomeAndConstructionBusiness',
       '@id': businessId,
       name: brand.founder,
+      // De drie streeklabels zijn merken van adviba en landen op deze configurator.
+      alternateName: brandLabels,
+      brand: brandLabels.map((name) => ({ '@type': 'Brand', name })),
       url: brand.website,
       telephone: brand.helpPhoneHref.replace('tel:', ''),
       email: brand.email,

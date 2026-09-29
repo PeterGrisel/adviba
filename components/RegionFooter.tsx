@@ -86,7 +86,14 @@ export function RegionFooter() {
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-dark-fg-muted">
                 Op zoek naar zonwering in huis of zonwering buiten zoals rolluiken of
                 screens? Als lokale streekspecialist tussen Heerewaarden en Ewijk zit{' '}
-                <span className="text-dark-fg">adviba</span> altijd om de hoek.
+                <a
+                  href={brand.website}
+                  target="_blank"
+                  rel="noopener"
+                  className="text-dark-fg underline decoration-accent-bright/60 underline-offset-2 transition-colors hover:text-accent-bright"
+                >
+                  adviba daglichtoplossingen
+                </a> altijd om de hoek.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 text-[15px]">
@@ -135,6 +142,15 @@ export function RegionFooter() {
               >
                 <CalendarDays className="h-4 w-4" strokeWidth={1.75} />
                 Plan een showroombezoek
+              </a>
+              <a
+                href={brand.website}
+                target="_blank"
+                rel="noopener"
+                className="mt-4 flex items-center gap-1.5 text-[14px] text-dark-fg/80 transition-colors hover:text-accent-bright"
+              >
+                Alle daglichtoplossingen bekijken op adviba.nl
+                <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
               </a>
             </div>
 
@@ -205,7 +221,16 @@ export function RegionFooter() {
           <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-5 py-6 text-[12px] text-dark-fg-muted md:flex-row md:items-center md:px-8">
             <div>
               © {new Date().getFullYear()} {brand.name} {brand.suffix}, een
-              initiatief van <span className="text-dark-fg">{brand.founder}</span>.
+              initiatief van{' '}
+              <a
+                href={brand.website}
+                target="_blank"
+                rel="noopener"
+                className="text-dark-fg underline decoration-dark-fg/30 underline-offset-2 hover:text-accent-bright"
+              >
+                adviba uit Boven-Leeuwen
+              </a>
+              .
             </div>
             <div>Demo prijsconfigurator. Alle bedragen zijn indicatief.</div>
           </div>

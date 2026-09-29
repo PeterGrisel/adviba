@@ -17,6 +17,7 @@ export function GET() {
     `- E-mail: ${brand.email}`,
     `- Bereikbaar: ${brand.hours}; ${brand.showroom.toLowerCase()}`,
     `- Website: ${brand.website}`,
+    `- Streeklabels van ${brand.founder} (komen allemaal uit op deze configurator): Maas en Waal Zonwering (${brand.domains[0]}), Maas en Waal Rolluiken (${brand.domains[1]}), Maas en Waal Horren (${brand.domains[2]})`,
     '',
     '## Producten (vanaf-prijzen incl. btw, indicatief)',
     ...productOrder.map((id) => `- ${products[id].name}: vanaf € ${products[id].basePrice}. ${products[id].description}`),
