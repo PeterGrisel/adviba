@@ -17,7 +17,7 @@ export function ProgressSteps({ currentStep, onStepClick, maxReachedStep }: Prop
       <div className="relative">
         <div className="absolute left-0 right-0 top-[10px] h-px bg-line" />
         <motion.div
-          className="absolute left-0 top-[10px] h-px bg-ink"
+          className="absolute left-0 top-[9px] h-[3px] rounded-full bg-accent"
           initial={false}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -43,9 +43,9 @@ export function ProgressSteps({ currentStep, onStepClick, maxReachedStep }: Prop
                     className={[
                       'grid h-5 w-5 place-items-center rounded-full border transition-all',
                       isActive
-                        ? 'border-ink bg-ink text-surface scale-110'
+                        ? 'border-accent bg-accent text-surface scale-110'
                         : isDone
-                          ? 'border-ink bg-ink text-surface'
+                          ? 'border-accent bg-accent text-surface'
                           : 'border-line bg-surface text-ink-muted',
                     ].join(' ')}
                   >

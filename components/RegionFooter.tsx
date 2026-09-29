@@ -2,22 +2,26 @@
 
 import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
 import { brand, region } from '@/data/configurator';
+import { AdvibaLogo } from './AdvibaLogo';
+import { useBrandTheme } from './BrandTheme';
+import type { ProductId } from '@/lib/types';
 
-const serviceLinks = [
-  { label: 'Zonwering & screens', href: '#' },
-  { label: 'Rolluiken', href: '#' },
-  { label: 'Horren', href: '#' },
-  { label: 'Terrasoverkappingen', href: '#' },
+const serviceLinks: { label: string; href: string; product?: ProductId }[] = [
+  { label: 'Zonwering & screens', href: '#configureer', product: 'screens' },
+  { label: 'Rolluiken', href: '#configureer', product: 'rolluiken' },
+  { label: 'Horren', href: '#configureer', product: 'horren' },
+  { label: 'Terrasoverkappingen', href: '#configureer', product: 'terrasoverkapping' },
   { label: 'Werkgebied', href: '#werkgebied' },
 ];
 
 export function RegionFooter() {
+  const { markInteracted, requestProduct } = useBrandTheme();
   return (
     <footer>
       {/* Amber CTA-band — ADviba stijl */}
       <a
         href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
-        className="group block bg-accent-bright transition-colors hover:bg-accent"
+        className="group block bg-accent-bright transition-[background-color,filter] duration-500 hover:brightness-110"
       >
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 px-5 py-4 text-center md:px-8 md:py-5">
           <span className="font-display text-[16px] font-semibold text-dark md:text-[19px]">
@@ -72,7 +76,14 @@ export function RegionFooter() {
                 </div>
               </div>
 
-              <p className="mt-6 max-w-md text-[15px] leading-relaxed text-dark-fg-muted">
+              <div className="mt-6 flex items-center gap-3">
+                <span className="text-[11px] uppercase tracking-[0.16em] text-dark-fg/70">
+                  Onderdeel van
+                </span>
+                <AdvibaLogo className="h-7" />
+              </div>
+
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-dark-fg-muted">
                 Op zoek naar zonwering in huis of zonwering buiten zoals rolluiken of
                 screens? Als lokale streekspecialist tussen Heerewaarden en Ewijk zit{' '}
                 <span className="text-dark-fg">ADviba</span> altijd om de hoek.
@@ -110,6 +121,11 @@ export function RegionFooter() {
                   <li key={l.label}>
                     <a
                       href={l.href}
+                      onClick={() => {
+                        if (!l.product) return;
+                        markInteracted();
+                        requestProduct(l.product);
+                      }}
                       className="group inline-flex items-center gap-2.5 text-[15px] text-dark-fg transition-colors hover:text-accent-bright"
                     >
                       <span className="grid h-6 w-6 flex-none place-items-center rounded-full border border-accent-bright/70 text-accent-bright transition-all group-hover:bg-accent-bright group-hover:text-dark">

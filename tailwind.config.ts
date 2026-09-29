@@ -35,6 +35,7 @@ const config: Config = {
           DEFAULT: 'rgb(var(--color-sky) / <alpha-value>)',
           soft: 'rgb(var(--color-sky-soft) / <alpha-value>)',
         },
+        'on-accent': 'rgb(var(--color-on-accent) / <alpha-value>)',
         cta: 'rgb(var(--color-cta) / <alpha-value>)',
         success: 'rgb(var(--color-success) / <alpha-value>)',
       },

@@ -22,14 +22,14 @@ export function OptionCard({ option, selected, onToggle }: Props) {
         'group relative flex w-full items-center gap-4 rounded-card border bg-surface p-5 text-left transition-all duration-300',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
         selected
-          ? 'border-ink shadow-elevated'
+          ? 'border-accent shadow-elevated ring-1 ring-accent'
           : 'border-line hover:border-ink/40 hover:shadow-card',
       ].join(' ')}
     >
       <div
         className={[
           'grid h-12 w-12 flex-none place-items-center rounded-full border transition-colors',
-          selected ? 'border-ink bg-ink text-surface' : 'border-line bg-canvas text-ink',
+          selected ? 'border-accent bg-accent text-on-accent' : 'border-line bg-canvas text-ink',
         ].join(' ')}
       >
         <Icon name={option.icon} className="h-5 w-5" />
@@ -51,7 +51,7 @@ export function OptionCard({ option, selected, onToggle }: Props) {
         className={[
           'ml-2 flex-none rounded-full transition-all',
           'h-6 w-11 border',
-          selected ? 'border-ink bg-ink' : 'border-line bg-canvas',
+          selected ? 'border-accent bg-accent' : 'border-line bg-canvas',
         ].join(' ')}
         aria-hidden
       >

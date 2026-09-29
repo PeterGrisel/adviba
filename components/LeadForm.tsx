@@ -94,7 +94,7 @@ export function LeadForm({ onSubmit, onBack }: Props) {
           type="checkbox"
           checked={data.consent}
           onChange={(e) => update('consent', e.target.checked)}
-          className="mt-0.5 h-4 w-4 accent-ink"
+          className="mt-0.5 h-4 w-4 accent-[rgb(var(--color-accent))]"
         />
         <span className="text-[14px] leading-relaxed text-ink">
           Ik ga akkoord dat ADviba contact met mij opneemt over deze configuratie.
@@ -114,7 +114,7 @@ export function LeadForm({ onSubmit, onBack }: Props) {
         </button>
         <button
           type="submit"
-          className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-cta px-6 text-[15px] font-medium text-surface transition-all hover:bg-ink hover:shadow-elevated"
+          className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 text-[15px] font-semibold text-on-accent transition-all hover:brightness-110 hover:shadow-elevated"
         >
           Stuur mijn prijsindicatie
           <ArrowRight

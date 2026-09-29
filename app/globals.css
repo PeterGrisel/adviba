@@ -19,6 +19,8 @@
   --color-accent-soft: 255 188 125; /* #ffbc7d */
   /* Brand-amber — bright zon-geel uit het Maas en Waal logo */
   --color-accent-bright: 245 166 35; /* #f5a623 */
+  /* Tekst op een accent-vlak (knoppen, badges) */
+  --color-on-accent: 11 15 26;
   /* Brand-orange — warm rood-oranje uit "ROLLUIKEN" letters */
   --color-brand-orange: 232 97 31; /* #e8611f */
   /* Brand-green — fris blad-groen uit "HORREN" merk */
@@ -43,6 +45,22 @@
     'Segoe UI', sans-serif;
   --font-display: 'Ubuntu', ui-sans-serif, 'Segoe UI', sans-serif;
   --font-slab: 'Roboto Slab', ui-serif, Georgia, serif;
+}
+
+/* Actief sub-merk — accent-tokens schakelen mee (zie BrandTheme.tsx).
+ * `accent` is de donkere variant voor tekst/UI op cream; `accent-bright`
+ * de logo-kleur voor vlakken en tekst op donker. */
+[data-brand='rolluiken'] {
+  --color-accent: 184 70 16; /* #b84610 */
+  --color-on-accent: 255 255 255;
+  --color-accent-soft: 247 181 143; /* #f7b58f */
+  --color-accent-bright: 232 97 31; /* #e8611f */
+}
+[data-brand='horren'] {
+  --color-accent: 53 122 38; /* #357a26 */
+  --color-on-accent: 255 255 255;
+  --color-accent-soft: 191 224 176; /* #bfe0b0 */
+  --color-accent-bright: 90 168 71; /* #5aa847 */
 }
 
 html,
@@ -106,7 +124,7 @@ input[type='range']::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  background: rgb(var(--color-ink));
+  background: rgb(var(--color-accent));
   cursor: pointer;
   border: 3px solid rgb(var(--color-surface));
   box-shadow: 0 1px 3px rgba(51, 54, 59, 0.25);
@@ -119,7 +137,7 @@ input[type='range']::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  background: rgb(var(--color-ink));
+  background: rgb(var(--color-accent));
   cursor: pointer;
   border: 3px solid rgb(var(--color-surface));
   box-shadow: 0 1px 3px rgba(51, 54, 59, 0.25);

@@ -21,11 +21,11 @@ export function ProductCard({ product, selected, onSelect }: Props) {
         'group relative flex w-full flex-col overflow-hidden rounded-card border bg-surface text-left transition-all duration-300',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
         selected
-          ? 'border-ink shadow-elevated'
+          ? 'border-accent shadow-elevated ring-1 ring-accent'
           : 'border-line hover:border-ink/40 hover:shadow-card',
       ].join(' ')}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-canvas">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-canvas md:aspect-[16/10]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}
@@ -42,18 +42,18 @@ export function ProductCard({ product, selected, onSelect }: Props) {
             scale: selected ? 1 : 0.7,
           }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-ink text-surface shadow-elevated"
+          className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-accent text-on-accent shadow-elevated"
         >
           <Check className="h-4 w-4" strokeWidth={2.5} />
         </motion.div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-6">
-        <h3 className="text-xl font-semibold tracking-tight text-ink">{product.name}</h3>
-        <p className="text-[15px] leading-relaxed text-ink-muted">{product.description}</p>
-        <div className="mt-auto pt-4">
-          <span className="text-[13px] uppercase tracking-[0.12em] text-ink-muted">Vanaf</span>
-          <div className="text-lg font-semibold tracking-tight text-ink">
+      <div className="flex flex-1 flex-col gap-1.5 p-3.5 md:p-5">
+        <h3 className="break-words text-[16px] font-semibold leading-tight tracking-tight text-ink md:text-lg">{product.name}</h3>
+        <p className="hidden text-[14px] leading-snug text-ink-muted sm:line-clamp-2">{product.description}</p>
+        <div className="mt-auto pt-2 md:pt-3">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-ink-muted md:text-[12px]">Vanaf</span>
+          <div className="text-[16px] font-semibold tracking-tight text-ink md:text-lg">
             {formatCurrency(product.basePrice)}
           </div>
         </div>

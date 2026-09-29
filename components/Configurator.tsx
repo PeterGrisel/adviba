@@ -28,6 +28,7 @@ import { ConfigurationSummary } from './ConfigurationSummary';
 import { LeadForm } from './LeadForm';
 import { SuccessState } from './SuccessState';
 import { AnimatedNumber } from './AnimatedNumber';
+import { productToBrand, useBrandTheme } from './BrandTheme';
 
 const STORAGE_KEY = 'adviba.configurator.v1';
 
@@ -41,13 +42,17 @@ export function Configurator() {
   const [config, setConfig] = useState<Configuration>(defaultConfiguration as Configuration);
   const [hydrated, setHydrated] = useState(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const { setBrand, markInteracted, requestedProduct } = useBrandTheme();
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as { config: Configuration; step: number };
-        if (parsed.config) setConfig({ ...defaultConfiguration, ...parsed.config } as Configuration);
+        if (parsed.config) {
+          setConfig({ ...defaultConfiguration, ...parsed.config } as Configuration);
+          if (parsed.config.productId) setBrand(productToBrand[parsed.config.productId]);
+        }
         if (typeof parsed.step === 'number' && parsed.step >= 0 && parsed.step < steps.length) {
           setStep(parsed.step);
           setMaxReached(parsed.step);
@@ -58,7 +63,7 @@ export function Configurator() {
     } finally {
       setHydrated(true);
     }
-  }, []);
+  }, [setBrand]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -126,6 +131,8 @@ export function Configurator() {
 
   // ---- Handlers ----
   const selectProduct = (id: ProductId) => {
+    setBrand(productToBrand[id]);
+    markInteracted();
     if (config.productId === id) return;
     // Reset execution + options because they are product-specific
     setConfig((c) => ({
@@ -138,6 +145,13 @@ export function Configurator() {
       quantity: 1,
     }));
   };
+
+  // Hero-CTA "Configureer online" → product van het getoonde merk voorselecteren
+  useEffect(() => {
+    if (!requestedProduct || !hydrated || status !== 'configuring' || step !== 0) return;
+    selectProduct(requestedProduct.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [requestedProduct?.nonce]);
 
   const selectExecution = (id: ExecutionId) => {
     setConfig((c) => ({ ...c, executionId: id }));
@@ -173,24 +187,24 @@ export function Configurator() {
   return (
     <div
       id="configureer"
-      className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-20 scroll-mt-24"
+      className="mx-auto max-w-6xl scroll-mt-[76px] px-5 py-10 md:px-8 md:py-14"
       ref={contentRef}
     >
-      <header className="mb-8 md:mb-12">
+      <header className="mb-6 md:mb-8">
         <div className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-ink-muted">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
           Prijsindicatie in 2 minuten
         </div>
-        <h2 className="mt-4 font-display text-[28px] font-semibold leading-[1.05] tracking-tight text-ink md:text-[40px]">
+        <h2 className="mt-3 font-display text-[26px] font-semibold leading-[1.1] tracking-tight text-ink md:text-[36px]">
           Configureer jouw zonwering{' '}
           <span className="font-slab italic font-normal text-accent">of</span> rolluik
         </h2>
-        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-muted md:text-[17px]">
+        <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-ink-muted md:text-[16px]">
           Doorloop 4 korte stappen — je ziet direct hoe de indicatieve prijs meeloopt.
         </p>
       </header>
 
-      <div className="mb-10 md:mb-14">
+      <div className="mb-8 md:mb-10">
         <ProgressSteps
           currentStep={step}
           maxReachedStep={maxReached}
@@ -198,8 +212,8 @@ export function Configurator() {
         />
       </div>
 
-      <div className="grid gap-8 md:grid-cols-[1fr_360px] md:gap-10">
-        <div className="min-h-[520px]">
+      <div className="grid gap-8 md:grid-cols-[1fr_320px] md:gap-8 lg:grid-cols-[1fr_340px] lg:gap-10">
+        <div className="min-w-0 md:min-h-[480px]">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={status === 'submitted' ? 'submitted' : `step-${step}`}
@@ -217,7 +231,7 @@ export function Configurator() {
                   title={copy.step1.title}
                   subtitle={copy.step1.subtitle}
                 >
-                  <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-3 md:gap-4 xl:grid-cols-4">
                     {productOrder.map((id) => (
                       <ProductCard
                         key={id}
@@ -314,7 +328,7 @@ export function Configurator() {
           </AnimatePresence>
 
           {status === 'configuring' && step < 4 && (
-            <div className="mt-8 flex items-center justify-between">
+            <div className="mt-6 flex items-center justify-between md:mt-8">
               <button
                 type="button"
                 onClick={prev}
@@ -331,7 +345,7 @@ export function Configurator() {
                 type="button"
                 onClick={next}
                 disabled={!canProceed}
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-cta px-6 text-[15px] font-medium text-surface transition-all hover:bg-ink hover:shadow-elevated disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-cta disabled:hover:shadow-none"
+                className="group inline-flex h-12 items-center gap-2 rounded-full bg-accent px-6 text-[15px] font-semibold text-on-accent transition-all hover:brightness-110 hover:shadow-elevated disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-accent disabled:hover:shadow-none"
               >
                 {step === 3 ? 'Bekijk prijs' : 'Volgende'}
                 <ArrowRight
@@ -343,7 +357,7 @@ export function Configurator() {
           )}
 
           {status === 'configuring' && (
-            <div className="mt-10 flex justify-center">
+            <div className="mt-6 flex justify-center md:mt-8">
               <button
                 type="button"
                 onClick={restart}
@@ -375,13 +389,13 @@ function StepIntro({
 }) {
   return (
     <section aria-live="polite">
-      <h2 className="font-display text-[26px] font-semibold leading-tight tracking-tight text-ink md:text-[34px]">
+      <h3 className="font-display text-[22px] font-semibold leading-tight tracking-tight text-ink md:text-[28px]">
         {title}
-      </h2>
+      </h3>
       <p className="mt-2 text-[15px] leading-relaxed text-ink-muted md:text-[16px]">
         {subtitle}
       </p>
-      <div className="mt-6 md:mt-8">{children}</div>
+      <div className="mt-5 md:mt-6">{children}</div>
     </section>
   );
 }
