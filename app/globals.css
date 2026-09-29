@@ -2,40 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Kleuren staan als RGB-kanalen zodat Tailwind opacity-modifiers (bg-dark/80) werken. */
 :root {
   /* Warm streek-palette — gedestileerd uit ADviba's eigen identiteit
    * (amber #F8A800, perzik #FFBC7D, daglicht #6EC1E4, warm grijs #54595F)
    * en verlengd naar het Land van Maas en Waal.
    */
-  --color-canvas: #f6f1e6;
-  --color-surface: #ffffff;
-  --color-ink: #33363b;
-  --color-ink-muted: #7a7a7a;
-  --color-line: #e8e0cd;
+  --color-canvas: 246 241 230; /* #f6f1e6 */
+  --color-surface: 255 255 255; /* #ffffff */
+  --color-ink: 51 54 59; /* #33363b */
+  --color-ink-muted: 122 122 122; /* #7a7a7a */
+  --color-line: 232 224 205; /* #e8e0cd */
 
   /* Warm accent — ADviba amber, iets verdiept voor UI-contrast op cream */
-  --color-accent: #e29200;
-  --color-accent-soft: #ffbc7d;
+  --color-accent: 226 146 0; /* #e29200 */
+  --color-accent-soft: 255 188 125; /* #ffbc7d */
   /* Brand-amber — bright zon-geel uit het Maas en Waal logo */
-  --color-accent-bright: #f5a623;
+  --color-accent-bright: 245 166 35; /* #f5a623 */
   /* Brand-orange — warm rood-oranje uit "ROLLUIKEN" letters */
-  --color-brand-orange: #e8611f;
+  --color-brand-orange: 232 97 31; /* #e8611f */
   /* Brand-green — fris blad-groen uit "HORREN" merk */
-  --color-brand-green: #5aa847;
+  --color-brand-green: 90 168 71; /* #5aa847 */
 
   /* Dark navy layer — matcht de brand-look uit het logo op donker */
-  --color-dark: #0b0f1a;
-  --color-dark-deep: #060812;
-  --color-dark-line: #1c2130;
-  --color-on-dark: #f5efdf;
-  --color-on-dark-muted: #9aa0ad;
+  --color-dark: 11 15 26; /* #0b0f1a */
+  --color-dark-deep: 6 8 18; /* #060812 */
+  --color-dark-line: 28 33 48; /* #1c2130 */
+  --color-on-dark: 245 239 223; /* #f5efdf */
+  --color-on-dark-muted: 154 160 173; /* #9aa0ad */
 
   /* Daglicht — Maas & Waal water/lucht */
-  --color-sky: #6ec1e4;
-  --color-sky-soft: #cfe9f4;
+  --color-sky: 110 193 228; /* #6ec1e4 */
+  --color-sky-soft: 207 233 244; /* #cfe9f4 */
 
-  --color-cta: #33363b;
-  --color-success: #61ce70;
+  --color-cta: 51 54 59; /* #33363b */
+  --color-success: 97 206 112; /* #61ce70 */
 
   /* Fonts — Ubuntu (kopjes) + Roboto Slab (accent) + Roboto (body) */
   --font-sans: 'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -46,8 +47,8 @@
 
 html,
 body {
-  background-color: var(--color-canvas);
-  color: var(--color-ink);
+  background-color: rgb(var(--color-canvas));
+  color: rgb(var(--color-ink));
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,7 +63,7 @@ body {
 }
 
 * {
-  border-color: var(--color-line);
+  border-color: rgb(var(--color-line));
 }
 
 .font-display {
@@ -75,7 +76,7 @@ body {
 
 /* Focus ring in de warme accentkleur */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid rgb(var(--color-accent));
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -95,7 +96,7 @@ input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   height: 4px;
-  background: var(--color-line);
+  background: rgb(var(--color-line));
   border-radius: 999px;
   outline: none;
 }
@@ -105,9 +106,9 @@ input[type='range']::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  background: var(--color-ink);
+  background: rgb(var(--color-ink));
   cursor: pointer;
-  border: 3px solid var(--color-surface);
+  border: 3px solid rgb(var(--color-surface));
   box-shadow: 0 1px 3px rgba(51, 54, 59, 0.25);
   transition: transform 0.15s ease;
 }
@@ -118,13 +119,13 @@ input[type='range']::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  background: var(--color-ink);
+  background: rgb(var(--color-ink));
   cursor: pointer;
-  border: 3px solid var(--color-surface);
+  border: 3px solid rgb(var(--color-surface));
   box-shadow: 0 1px 3px rgba(51, 54, 59, 0.25);
 }
 
 ::selection {
-  background-color: var(--color-accent-soft);
-  color: var(--color-ink);
+  background-color: rgb(var(--color-accent-soft));
+  color: rgb(var(--color-ink));
 }

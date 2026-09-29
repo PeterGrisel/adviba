@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowDown, MapPin, PhoneCall } from 'lucide-react';
+import { ArrowDown, MapPin, Pause, PhoneCall, Play } from 'lucide-react';
 import { brand } from '@/data/configurator';
 import { BrandMark, type BrandVariant } from './BrandMark';
 
@@ -63,11 +63,15 @@ const slides: Slide[] = [
   },
 ];
 
-const AUTO_ADVANCE_MS = 6500;
+// Lang genoeg om kop + body rustig te lezen (WCAG 2.2.2: pauzeerbaar)
+const AUTO_ADVANCE_MS = 9000;
 
 export function Hero() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [userPaused, setUserPaused] = useState(false);
+  const paused = hovered || focused || userPaused;
   const reduce = useReducedMotion();
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const slide = slides[index];
@@ -99,8 +103,12 @@ export function Hero() {
     <section
       className="relative isolate overflow-hidden bg-dark text-dark-fg"
       aria-label="Introductie Maas en Waal — Zonwering, Rolluiken, Horren"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setFocused(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocused(false);
+      }}
     >
       {/* Achtergrond — kruisvervaging tussen slides */}
       <div className="absolute inset-0 -z-10">
@@ -123,32 +131,34 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Vaste dark overlays — leesbaarheid over WELKE achtergrond dan ook */}
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/95 via-dark/75 to-dark/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-dark/20" />
+        {/* Vaste dark overlays — leesbaarheid over WELKE achtergrond dan ook.
+         * Mobiel: tekst loopt over de volle breedte, dus een egale scrim.
+         * Desktop: tekstkolom links vrijwel dicht, foto rechts zichtbaar. */}
+        <div className="absolute inset-0 bg-dark/80 md:bg-transparent md:bg-gradient-to-r md:from-dark/95 md:via-dark/80 md:to-dark/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-dark/40" />
 
         {/* Brand-gekleurde gloed onder-rechts, wisselt mee */}
         <motion.div
           key={`glow-${slide.id}`}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.28 }}
+          animate={{ opacity: 0.18 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="absolute -bottom-40 -right-24 h-[28rem] w-[28rem] rounded-full blur-3xl"
+          className="absolute -bottom-40 -right-24 hidden h-[28rem] md:block w-[28rem] rounded-full blur-3xl"
           style={{ background: `rgb(${slide.glowColor})` }}
         />
       </div>
 
       {/* Top-right: onderdeel van ADviba */}
       <div className="pointer-events-none absolute right-5 top-5 hidden md:block md:right-8">
-        <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-dark-line bg-dark-deep/70 px-3 py-1.5 backdrop-blur">
-          <span className="text-[10.5px] uppercase tracking-[0.18em] text-dark-fg-muted">
+        <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5 backdrop-blur">
+          <span className="text-[11px] uppercase tracking-[0.16em] text-dark-fg/75">
             Onderdeel van
           </span>
           <span className="font-display text-[13px] font-semibold tracking-tight text-dark-fg">
             adviba
           </span>
-          <span className="hidden text-[10.5px] uppercase tracking-[0.18em] text-dark-fg-muted lg:inline">
+          <span className="hidden text-[11px] uppercase tracking-[0.16em] text-dark-fg/75 lg:inline">
             · Lokaal vakmanschap
           </span>
         </div>
@@ -165,7 +175,7 @@ export function Hero() {
             className="max-w-2xl"
           >
             {/* Brand-eyebrow */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-dark-line bg-dark-deep/70 px-3 py-1.5 backdrop-blur">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5 backdrop-blur">
               <BrandMark className="h-5 w-6" variant={slide.id} onDark />
               <span
                 className={[
@@ -175,24 +185,24 @@ export function Hero() {
               >
                 {slide.label}
               </span>
-              <span className="text-[10.5px] uppercase tracking-[0.14em] text-dark-fg-muted">
+              <span className="hidden text-[11px] uppercase tracking-[0.14em] text-dark-fg/80 sm:inline">
                 {slide.subLabel}
               </span>
             </div>
 
-            <h1 className="mt-6 font-display text-[42px] font-semibold leading-[1.03] tracking-tight text-white md:text-[64px] lg:text-[74px]">
+            <h1 className="mt-6 font-display text-[40px] font-semibold leading-[1.05] tracking-tight text-white [text-shadow:0_2px_24px_rgb(0_0_0/0.45)] md:text-[64px] lg:text-[74px]">
               {slide.headlinePrefix}{' '}
               <span className={[slide.colorClass, 'font-bold'].join(' ')}>
                 {slide.headlineAccent}
               </span>
             </h1>
 
-            <p className="mt-5 max-w-lg text-[16px] leading-relaxed text-dark-fg-muted md:text-[18px]">
+            <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-dark-fg/90 [text-shadow:0_1px_12px_rgb(0_0_0/0.5)] md:text-[19px]">
               {slide.body}
             </p>
 
-            <div className="mt-6 inline-flex items-center gap-2 text-[13px] italic text-dark-fg-muted font-slab">
-              <MapPin className="h-3.5 w-3.5 text-white" strokeWidth={1.75} />
+            <div className="mt-6 inline-flex items-center gap-2 font-slab text-[14px] italic text-dark-fg/85">
+              <MapPin className="h-4 w-4 text-white" strokeWidth={1.75} />
               Lokaal geregeld in Maas en Waal
             </div>
 
@@ -212,7 +222,7 @@ export function Hero() {
               </a>
               <a
                 href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-dark-line bg-dark-deep/60 px-5 text-[14px] font-medium text-dark-fg backdrop-blur transition-colors hover:border-white"
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-dark-deep/70 px-5 text-[15px] font-medium text-dark-fg backdrop-blur transition-colors hover:border-white"
               >
                 <PhoneCall className="h-3.5 w-3.5" strokeWidth={1.75} />
                 of bel ADviba
@@ -223,8 +233,24 @@ export function Hero() {
 
         {/* Brand-tabs — 3 merken kiezen */}
         <div className="mt-12 md:mt-16">
-          <div className="mb-3 text-[10.5px] uppercase tracking-[0.18em] text-dark-fg-muted">
-            Drie merken · één specialist
+          <div className="mb-3 flex items-center gap-3">
+            <span className="text-[11px] uppercase tracking-[0.16em] text-dark-fg/80">
+              Drie merken · één specialist
+            </span>
+            {!reduce && (
+              <button
+                type="button"
+                onClick={() => setUserPaused((p) => !p)}
+                aria-label={userPaused ? 'Diavoorstelling afspelen' : 'Diavoorstelling pauzeren'}
+                className="grid h-7 w-7 place-items-center rounded-full border border-white/25 bg-dark-deep/70 text-dark-fg backdrop-blur transition-colors hover:border-white"
+              >
+                {userPaused ? (
+                  <Play className="h-3 w-3" strokeWidth={2.25} />
+                ) : (
+                  <Pause className="h-3 w-3" strokeWidth={2.25} />
+                )}
+              </button>
+            )}
           </div>
           <div
             role="tablist"
@@ -244,7 +270,7 @@ export function Hero() {
                     'group relative inline-flex items-center gap-2.5 rounded-full border px-3.5 py-2 text-left transition-all',
                     active
                       ? 'border-white bg-white text-dark shadow-elevated'
-                      : 'border-dark-line bg-dark-deep/60 text-dark-fg-muted backdrop-blur hover:border-white/50 hover:text-dark-fg',
+                      : 'border-white/20 bg-dark-deep/75 text-dark-fg/90 backdrop-blur hover:border-white/60 hover:text-dark-fg',
                   ].join(' ')}
                 >
                   <BrandMark
@@ -264,8 +290,8 @@ export function Hero() {
                     </span>
                     <span
                       className={[
-                        'text-[10px] uppercase tracking-[0.12em]',
-                        active ? 'text-ink-muted' : 'opacity-80',
+                        'text-[11px] uppercase tracking-[0.1em]',
+                        active ? 'text-ink' : 'text-dark-fg/75',
                       ].join(' ')}
                     >
                       {s.subLabel}
