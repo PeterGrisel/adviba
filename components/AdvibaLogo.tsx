@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { brand } from '@/data/configurator';
+import { imageSrc } from '@/lib/remoteImages';
 
 /**
  * Het ADviba-logo op een lichte plaat, zodat het op donkere vlakken leesbaar
@@ -17,10 +19,12 @@ export function AdvibaLogo({ className = 'h-5' }: { className?: string }) {
           {brand.founder}
         </span>
       ) : (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={brand.founderLogo}
+        <Image
+          src={imageSrc('adviba-logo')}
           alt={brand.founder}
+          width={1536}
+          height={500}
+          sizes="120px"
           className={`${className} w-auto`}
           onError={() => setFailed(true)}
         />

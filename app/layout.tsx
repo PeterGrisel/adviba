@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SmoothScroll } from '@/components/SmoothScroll';
 
 export const metadata: Metadata = {
   title: 'Maas en Waal Zonwering & Rolluiken — configureer online',
@@ -18,7 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;500;600&display=swap"
         />
       </head>
-      <body className="min-h-screen bg-canvas antialiased">{children}</body>
+      <body className="min-h-screen bg-canvas antialiased">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

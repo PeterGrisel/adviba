@@ -4,7 +4,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowDown, MapPin, Pause, PhoneCall, Play } from 'lucide-react';
 import { brand } from '@/data/configurator';
+import Image from 'next/image';
 import { BrandMark, type BrandVariant } from './BrandMark';
+import { imageSrc } from '@/lib/remoteImages';
 import { AdvibaLogo } from './AdvibaLogo';
 import { brandToProduct, useBrandTheme } from './BrandTheme';
 
@@ -18,13 +20,8 @@ interface Slide {
   image: string;
   colorClass: string; // tekst + border kleur
   bgClass: string; // solid fill van de brand-kleur (voor CTAs, badge)
-  glowColor: string; // rgb voor achtergrondgloed
 }
 
-const wm = (file: string) =>
-  `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(
-    file
-  )}?width=2400`;
 
 const slides: Slide[] = [
   {
@@ -34,10 +31,9 @@ const slides: Slide[] = [
     headlinePrefix: 'Van zon naar',
     headlineAccent: 'comfort.',
     body: 'Screens, uitvalschermen en markiezen — geleverd en gemonteerd door ADviba, jouw specialist tussen Heerewaarden en Ewijk.',
-    image: wm('De_Waal_bij_Beneden_Leeuwen_-_panoramio.jpg'),
+    image: imageSrc('waal-beneden-leeuwen'),
     colorClass: 'text-accent-bright',
     bgClass: 'bg-accent-bright',
-    glowColor: '245, 166, 35',
   },
   {
     id: 'rolluiken',
@@ -46,10 +42,9 @@ const slides: Slide[] = [
     headlinePrefix: 'Meer dan alleen',
     headlineAccent: 'privacy.',
     body: 'Rolluiken die je woning verduisteren, isoleren en beschermen. Op maat gemaakt door ADviba, lokaal geïnstalleerd in Maas en Waal.',
-    image: wm('Van_af_de_Waaldijk_zien_we_het_dorp_Dreumel.jpg'),
+    image: imageSrc('waaldijk-dreumel'),
     colorClass: 'text-brand-orange',
     bgClass: 'bg-brand-orange',
-    glowColor: '232, 97, 31',
   },
   {
     id: 'horren',
@@ -58,10 +53,9 @@ const slides: Slide[] = [
     headlinePrefix: 'Frisse lucht zonder',
     headlineAccent: 'ongedierte.',
     body: 'Horren die passen bij elk raam of deur — muggen buiten, daglicht binnen. ADviba plaatst ze bij je thuis in de streek.',
-    image: wm('Dreumelsche_Waard.jpg'),
+    image: imageSrc('dreumelsche-waard'),
     colorClass: 'text-brand-green',
     bgClass: 'bg-brand-green',
-    glowColor: '90, 168, 71',
   },
 ];
 
@@ -113,13 +107,6 @@ export function Hero() {
     };
   }, [advance, reduce, paused]);
 
-  // Preload andere slides zodat de wissel snel voelt
-  useEffect(() => {
-    slides.forEach((s) => {
-      const img = new Image();
-      img.src = s.image;
-    });
-  }, []);
 
   return (
     <section
@@ -135,24 +122,26 @@ export function Hero() {
     >
       {/* Achtergrond — kruisvervaging tussen slides */}
       <div className="absolute inset-0 -z-10">
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={slide.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0"
+        {/* Alle slides blijven gemount; alleen opacity wisselt (GPU), dus geen
+         * her-decoderen of layout-werk bij elke wissel. */}
+        {slides.map((s, i) => (
+          <div
+            key={s.id}
+            className="absolute inset-0 transition-opacity duration-[1100ms] ease-out will-change-[opacity]"
+            style={{ opacity: i === index ? 1 : 0 }}
+            aria-hidden={i !== index}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={slide.image}
+            <Image
+              src={s.image}
               alt=""
-              className="h-full w-full object-cover"
-              loading="eager"
+              fill
+              sizes="100vw"
+              quality={70}
+              priority={i === 0}
+              className="object-cover"
             />
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        ))}
 
         {/* Vaste dark overlays — leesbaarheid over WELKE achtergrond dan ook.
          * Mobiel: tekst loopt over de volle breedte, dus een egale scrim.
@@ -160,21 +149,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-dark/45 via-dark/55 to-dark/80 md:bg-transparent md:bg-gradient-to-r md:from-dark/85 md:via-dark/45 md:to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-dark/80 to-transparent" />
 
-        {/* Brand-gekleurde gloed onder-rechts, wisselt mee */}
-        <motion.div
-          key={`glow-${slide.id}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.18 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="absolute -bottom-40 -right-24 hidden h-[28rem] md:block w-[28rem] rounded-full blur-3xl"
-          style={{ background: `rgb(${slide.glowColor})` }}
-        />
       </div>
 
       {/* Top-right: onderdeel van ADviba */}
       <div className="pointer-events-none absolute right-5 top-5 hidden md:block md:right-8">
-        <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5 backdrop-blur">
+        <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5">
           <span className="text-[11px] uppercase tracking-[0.16em] text-dark-fg/75">
             Onderdeel van
           </span>
@@ -196,7 +175,7 @@ export function Hero() {
             className="max-w-2xl"
           >
             {/* Brand-eyebrow */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5 backdrop-blur">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5">
               <BrandMark className="h-5 w-6" variant={slide.id} onDark />
               <span
                 className={[
@@ -247,7 +226,7 @@ export function Hero() {
               </a>
               <a
                 href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-dark-deep/70 px-5 text-[15px] font-medium text-dark-fg backdrop-blur transition-colors hover:border-white"
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-dark-deep/70 px-5 text-[15px] font-medium text-dark-fg transition-colors hover:border-white"
               >
                 <PhoneCall className="h-3.5 w-3.5" strokeWidth={1.75} />
                 <span className="sm:hidden">Bel</span>
@@ -268,7 +247,7 @@ export function Hero() {
                 type="button"
                 onClick={() => setUserPaused((p) => !p)}
                 aria-label={userPaused ? 'Diavoorstelling afspelen' : 'Diavoorstelling pauzeren'}
-                className="grid h-7 w-7 place-items-center rounded-full border border-white/25 bg-dark-deep/70 text-dark-fg backdrop-blur transition-colors hover:border-white"
+                className="grid h-7 w-7 place-items-center rounded-full border border-white/25 bg-dark-deep/70 text-dark-fg transition-colors hover:border-white"
               >
                 {userPaused ? (
                   <Play className="h-3 w-3" strokeWidth={2.25} />
@@ -299,7 +278,7 @@ export function Hero() {
                     'group relative inline-flex items-center justify-center gap-2 rounded-full border px-2.5 py-2 text-left transition-all sm:justify-start sm:gap-2.5 sm:px-3.5',
                     active
                       ? 'border-white bg-white text-dark shadow-elevated'
-                      : 'border-white/20 bg-dark-deep/75 text-dark-fg/90 backdrop-blur hover:border-white/60 hover:text-dark-fg',
+                      : 'border-white/20 bg-dark-deep/75 text-dark-fg/90 hover:border-white/60 hover:text-dark-fg',
                   ].join(' ')}
                 >
                   <BrandMark

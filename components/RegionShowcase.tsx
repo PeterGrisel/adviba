@@ -1,9 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import { MapPin } from 'lucide-react';
+import { imageSrc, type ImageKey } from '@/lib/remoteImages';
 
 interface Shot {
-  file: string;
+  file: ImageKey;
   caption: string;
   village: string;
   credit: string;
@@ -16,30 +18,25 @@ interface Shot {
  */
 const shots: Shot[] = [
   {
-    file: 'De_Waal_bij_Beneden_Leeuwen_-_panoramio.jpg',
+    file: 'waal-beneden-leeuwen',
     caption: 'De Waal, aan de rand van',
     village: 'Beneden-Leeuwen',
     credit: 'Foto: bertknot via Panoramio, CC BY-SA 3.0',
   },
   {
-    file: 'Dreumel_op_de_Waalbandijk_in_Het_Land_van_Maas_en_Waal.jpg',
+    file: 'waalbandijk-dreumel',
     caption: 'Waalbandijk richting',
     village: 'Dreumel',
     credit: 'Foto: Wutsje via Wikimedia Commons, CC BY-SA 3.0',
   },
   {
-    file: 'Dreumel_kerk,_Nederland.jpg',
+    file: 'dreumel-kerk',
     caption: 'Dorpstoren van',
     village: 'Dreumel',
     credit: 'Foto: Wikimedia Commons, CC BY-SA 4.0',
   },
 ];
 
-function src(file: string, width: number): string {
-  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(
-    file
-  )}?width=${width}`;
-}
 
 export function RegionShowcase() {
   return (
@@ -75,12 +72,13 @@ export function RegionShowcase() {
                 'aspect-[4/3]',
               ].join(' ')}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src(shot.file, 1200)}
+              <Image
+                src={imageSrc(shot.file)}
                 alt={`${shot.caption} ${shot.village}`}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                quality={70}
+                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
               />
 
               {/* Warme onderrand-gradient voor leesbaarheid van caption */}

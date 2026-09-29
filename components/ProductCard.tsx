@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import type { Product } from '@/lib/types';
@@ -26,12 +27,13 @@ export function ProductCard({ product, selected, onSelect }: Props) {
       ].join(' ')}
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-canvas md:aspect-[16/10]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={product.image}
           alt=""
-          className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-          loading="lazy"
+          fill
+          sizes="(min-width: 1280px) 220px, (min-width: 768px) 30vw, 50vw"
+          quality={70}
+          className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 

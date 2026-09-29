@@ -5,7 +5,6 @@ export const brand = {
   suffix: 'Zonwering · Rolluiken · Horren',
   tagline: 'Van Heerewaarden tot Ewijk',
   founder: 'ADviba',
-  founderLogo: 'https://www.adviba.nl/wp-content/uploads/2021/04/Logo-Adviba-1536x500.png',
   founderRole: 'Specialist uit de streek',
   domains: [
     'maasenwaalzonwering.nl',
