@@ -19,7 +19,7 @@ export function GET() {
     `- Website: ${brand.website}`,
     '',
     '## Producten (vanaf-prijzen incl. btw, indicatief)',
-    ...productOrder.map((id) => `- ${products[id].name}: vanaf € ${products[id].basePrice} — ${products[id].description}`),
+    ...productOrder.map((id) => `- ${products[id].name}: vanaf € ${products[id].basePrice}. ${products[id].description}`),
     '',
     '## Werkgebied',
     region.villages.join(', '),

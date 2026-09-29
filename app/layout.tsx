@@ -5,7 +5,7 @@ import { siteDescription, siteName, siteTitle, siteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: siteTitle, template: `%s — ${siteName}` },
+  title: { default: siteTitle, template: `%s | ${siteName}` },
   description: siteDescription,
   alternates: { canonical: '/' },
   openGraph: {

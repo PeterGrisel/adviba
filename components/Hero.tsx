@@ -30,7 +30,7 @@ const slides: Slide[] = [
     subLabel: 'Comfort voor elk seizoen',
     headlinePrefix: 'Van zon naar',
     headlineAccent: 'comfort.',
-    body: 'Screens, uitvalschermen en markiezen — geleverd en gemonteerd door adviba, jouw specialist tussen Heerewaarden en Ewijk.',
+    body: 'Screens, uitvalschermen en markiezen, geleverd en gemonteerd door adviba: jouw specialist tussen Heerewaarden en Ewijk.',
     image: imageSrc('waal-beneden-leeuwen'),
     colorClass: 'text-accent-bright',
     bgClass: 'bg-accent-bright',
@@ -52,7 +52,7 @@ const slides: Slide[] = [
     subLabel: 'Frisse lucht, zonder ongedierte',
     headlinePrefix: 'Frisse lucht zonder',
     headlineAccent: 'ongedierte.',
-    body: 'Horren die passen bij elk raam of deur — muggen buiten, daglicht binnen. adviba plaatst ze bij je thuis in de streek.',
+    body: 'Horren die passen bij elk raam of deur. Muggen buiten, daglicht binnen. adviba plaatst ze bij je thuis in de streek.',
     image: imageSrc('dreumelsche-waard'),
     colorClass: 'text-brand-green',
     bgClass: 'bg-brand-green',
@@ -112,7 +112,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       className="relative isolate flex min-h-[calc(100svh-76px)] flex-col justify-center overflow-hidden bg-dark text-dark-fg"
-      aria-label="Introductie Maas en Waal — Zonwering, Rolluiken, Horren"
+      aria-label="Introductie Maas en Waal: zonwering, rolluiken en horren"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setFocused(true)}

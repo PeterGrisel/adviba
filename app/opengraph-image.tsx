@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Zonwering, rolluiken & horren in Maas en Waal — bereken je prijs in 2 minuten';
+export const alt = 'Zonwering, rolluiken & horren in Maas en Waal. Bereken je prijs in 2 minuten.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -27,7 +27,7 @@ export default function OgImage() {
           <span style={{ color: '#5aa847' }}>HORREN</span>
         </div>
         <div style={{ marginTop: 56, fontSize: 44, lineHeight: 1.2, maxWidth: 900 }}>
-          Bereken je prijs in 2 minuten — van Heerewaarden tot Ewijk.
+          Bereken je prijs in 2 minuten, van Heerewaarden tot Ewijk.
         </div>
         <div style={{ marginTop: 28, fontSize: 26, color: '#9aa0ad' }}>Inmeting en montage door adviba</div>
       </div>

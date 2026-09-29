@@ -240,9 +240,9 @@ export const products: Record<ProductId, Product> = {
   horren: {
     id: 'horren',
     name: 'Horren',
-    description: 'Frisse lucht binnen — insecten buiten.',
+    description: 'Frisse lucht binnen, insecten buiten.',
     longDescription:
-      'Discrete horren die passen bij elk raam of deur. Bescherming tegen muggen, wespen en vliegen — zonder je zicht of daglicht op te offeren.',
+      'Discrete horren die passen bij elk raam of deur. Bescherming tegen muggen, wespen en vliegen, zonder je zicht of daglicht op te offeren.',
     image:
       'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
     basePrice: 245,
@@ -345,7 +345,7 @@ export const products: Record<ProductId, Product> = {
       {
         id: 'geisoleerd',
         name: 'Geïsoleerd',
-        description: 'Sandwichpanelen — minder warmte, minder geluid.',
+        description: 'Sandwichpanelen: minder warmte, minder geluid.',
         price: 695,
         icon: 'Layers',
       },
@@ -421,7 +421,7 @@ export const copy = {
   intro: {
     title: 'Configureer jouw zonwering of rolluik',
     subtitle:
-      'Prijsindicatie in 2 minuten — voor iedereen tussen Heerewaarden en Ewijk.',
+      'Prijsindicatie in 2 minuten, voor iedereen tussen Heerewaarden en Ewijk.',
   },
   step1: {
     title: 'Wat wil je configureren?',
@@ -452,7 +452,7 @@ export const copy = {
     incl: 'Incl. btw',
   },
   success: {
-    title: 'Gelukt — adviba neemt persoonlijk contact op.',
+    title: 'Gelukt! adviba neemt persoonlijk contact op.',
     body: 'Je aanvraag staat klaar. Als lokale streekspecialist plant adviba doorgaans binnen één werkdag een gratis inmeting bij jou thuis in.',
   },
 };

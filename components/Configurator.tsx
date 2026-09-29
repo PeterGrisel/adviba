@@ -212,7 +212,7 @@ export function Configurator() {
           <span className="font-slab italic font-normal text-accent">of</span> rolluik
         </h2>
         <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-ink-muted md:text-[16px]">
-          Doorloop 4 korte stappen — je ziet direct hoe de indicatieve prijs meeloopt.
+          Doorloop 4 korte stappen en zie direct hoe de indicatieve prijs meeloopt.
         </p>
       </header>
 

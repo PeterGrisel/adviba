@@ -102,7 +102,7 @@ export async function POST(req: Request) {
           from: process.env.LEAD_EMAIL_FROM ?? 'Maas en Waal configurator <onboarding@resend.dev>',
           to: (process.env.LEAD_EMAIL_TO ?? brand.email).split(',').map((s) => s.trim()),
           reply_to: clean.email,
-          subject: `Nieuwe aanvraag: ${product.name} — ${clean.firstName} ${clean.lastName} (${clean.postcode})`,
+          subject: `Nieuwe aanvraag: ${product.name}, ${clean.firstName} ${clean.lastName} (${clean.postcode})`,
           text: emailText(payload),
         }),
       })

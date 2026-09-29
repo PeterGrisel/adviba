@@ -14,7 +14,7 @@ export function Header() {
         <a
           href="#"
           className="flex items-center gap-3"
-          aria-label={`${brand.name} ${brand.suffix} — home`}
+          aria-label={`${brand.name} ${brand.suffix}, naar de homepage`}
         >
           <BrandMark className="h-10 w-12" variant={active} onDark />
           <span className="flex flex-col leading-[1.05]">

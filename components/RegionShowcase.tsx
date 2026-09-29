@@ -49,14 +49,14 @@ export function RegionShowcase() {
               Uit onze streek
             </div>
             <h2 className="mt-4 font-display text-[26px] font-semibold leading-tight tracking-tight text-ink md:text-[36px]">
-              Waar wij thuis zijn —{' '}
+              Waar wij thuis zijn:{' '}
               <span className="font-slab italic font-normal text-accent">
                 tussen Maas en Waal
               </span>
             </h2>
           </div>
           <p className="max-w-sm text-[14px] leading-relaxed text-ink-muted md:text-right">
-            Van de uiterwaarden bij Heerewaarden tot de dorpstorens richting Ewijk —
+            Van de uiterwaarden bij Heerewaarden tot de dorpstorens richting Ewijk:
             elke woning die we voorzien staat in een landschap dat we van binnen kennen.
           </p>
         </div>
@@ -98,7 +98,7 @@ export function RegionShowcase() {
         </div>
 
         <p className="mt-6 text-[11px] leading-relaxed text-ink-muted">
-          Beeld: Wikimedia Commons —{' '}
+          Beeld: Wikimedia Commons.{' '}
           {shots.map((s, i) => (
             <span key={s.file}>
               {i > 0 && ' · '}

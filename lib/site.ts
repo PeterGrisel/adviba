@@ -11,6 +11,6 @@ export const siteUrl = (
 ).replace(/\/$/, '');
 
 export const siteName = 'Maas en Waal Zonwering · Rolluiken · Horren';
-export const siteTitle = 'Zonwering, rolluiken & horren in Maas en Waal — adviba';
+export const siteTitle = 'Zonwering, rolluiken & horren in Maas en Waal | adviba';
 export const siteDescription =
   'Screens, rolluiken en horren op maat in Maas en Waal, van Heerewaarden tot Ewijk. Bereken je prijs in 2 minuten; inmeting en montage door adviba.';

@@ -204,7 +204,7 @@ export function RegionFooter() {
         <div className="border-t border-dark-line bg-dark-deep">
           <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-5 py-6 text-[12px] text-dark-fg-muted md:flex-row md:items-center md:px-8">
             <div>
-              © {new Date().getFullYear()} {brand.name} {brand.suffix} — een
+              © {new Date().getFullYear()} {brand.name} {brand.suffix}, een
               initiatief van <span className="text-dark-fg">{brand.founder}</span>.
             </div>
             <div>Demo prijsconfigurator. Alle bedragen zijn indicatief.</div>
