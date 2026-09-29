@@ -1,0 +1,173 @@
+'use client';
+
+import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
+import { brand, region } from '@/data/configurator';
+
+const serviceLinks = [
+  { label: 'Zonwering & screens', href: '#' },
+  { label: 'Rolluiken', href: '#' },
+  { label: 'Horren', href: '#' },
+  { label: 'Terrasoverkappingen', href: '#' },
+  { label: 'Werkgebied', href: '#werkgebied' },
+];
+
+export function RegionFooter() {
+  return (
+    <footer>
+      {/* Amber CTA-band — ADviba stijl */}
+      <a
+        href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
+        className="group block bg-accent-bright transition-colors hover:bg-accent"
+      >
+        <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 px-5 py-4 text-center md:px-8 md:py-5">
+          <span className="font-display text-[16px] font-semibold text-dark md:text-[19px]">
+            Op zoek naar persoonlijk advies uit de streek? Bel ADviba.
+          </span>
+          <ArrowRight
+            className="hidden h-5 w-5 flex-none text-dark transition-transform group-hover:translate-x-0.5 md:block"
+            strokeWidth={2.5}
+          />
+        </div>
+      </a>
+
+      {/* Donker corpus */}
+      <div className="bg-dark text-dark-fg">
+        <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
+          <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr] md:gap-14">
+            {/* Kolom 1 — merk + verhaal */}
+            <div>
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="grid h-11 w-11 place-items-center rounded-full border border-dark-line bg-dark-deep"
+                >
+                  <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M2 7c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      className="text-accent-bright"
+                    />
+                    <path
+                      d="M2 13c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      className="text-dark-fg"
+                    />
+                  </svg>
+                </span>
+                <div className="flex flex-col leading-tight">
+                  <span className="font-display text-[20px] font-semibold tracking-tight text-dark-fg">
+                    Maas{' '}
+                    <span className="font-slab italic font-normal text-accent-bright">
+                      en
+                    </span>{' '}
+                    Waal
+                  </span>
+                  <span className="text-[10.5px] uppercase tracking-[0.18em] text-dark-fg-muted">
+                    {brand.suffix}
+                  </span>
+                </div>
+              </div>
+
+              <p className="mt-6 max-w-md text-[15px] leading-relaxed text-dark-fg-muted">
+                Op zoek naar zonwering in huis of zonwering buiten zoals rolluiken of
+                screens? Als lokale streekspecialist tussen Heerewaarden en Ewijk zit{' '}
+                <span className="text-dark-fg">ADviba</span> altijd om de hoek.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 text-[15px]">
+                <a
+                  href={`tel:${brand.helpPhone.replace(/\s|\(|\)/g, '')}`}
+                  className="group inline-flex items-center gap-3 text-dark-fg transition-colors hover:text-accent-bright"
+                >
+                  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent-bright text-dark transition-transform group-hover:scale-105">
+                    <Phone className="h-4 w-4" strokeWidth={2.25} />
+                  </span>
+                  {brand.helpPhone}
+                </a>
+                <a
+                  href="mailto:advies@maasenwaalzonwering.nl"
+                  className="group inline-flex items-center gap-3 text-dark-fg transition-colors hover:text-accent-bright"
+                >
+                  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent-bright text-dark transition-transform group-hover:scale-105">
+                    <Mail className="h-4 w-4" strokeWidth={2.25} />
+                  </span>
+                  advies@maasenwaalzonwering.nl
+                </a>
+              </div>
+            </div>
+
+            {/* Kolom 2 — service & producten */}
+            <div id="contact">
+              <h3 className="font-display text-[18px] font-semibold text-accent-bright">
+                Onze service en producten
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {serviceLinks.map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      className="group inline-flex items-center gap-2.5 text-[15px] text-dark-fg transition-colors hover:text-accent-bright"
+                    >
+                      <span className="grid h-6 w-6 flex-none place-items-center rounded-full border border-accent-bright/70 text-accent-bright transition-all group-hover:bg-accent-bright group-hover:text-dark">
+                        <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+                      </span>
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Kolom 3 — werkgebied */}
+            <div id="werkgebied">
+              <h3 className="font-display text-[18px] font-semibold text-accent-bright">
+                Werkgebied
+              </h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-dark-fg-muted">
+                Van {region.villages[0]} aan de Maas tot{' '}
+                {region.villages[region.villages.length - 1]} aan de Waal.
+              </p>
+              <ul className="mt-5 flex flex-wrap gap-1.5">
+                {region.villages.map((v) => (
+                  <li
+                    key={v}
+                    className="rounded-full border border-dark-line bg-dark-deep px-2.5 py-1 text-[12px] text-dark-fg-muted"
+                  >
+                    {v}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 flex flex-wrap gap-1.5">
+                {brand.domains.map((d) => (
+                  <span
+                    key={d}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-accent-bright/40 bg-dark-deep px-2.5 py-1 text-[11px] font-medium text-accent-bright"
+                  >
+                    <MapPin className="h-3 w-3" strokeWidth={2} />
+                    {d}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Onderste band — nóg donkerder, © en credits */}
+        <div className="border-t border-dark-line bg-dark-deep">
+          <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-5 py-6 text-[12px] text-dark-fg-muted md:flex-row md:items-center md:px-8">
+            <div>
+              © {new Date().getFullYear()} {brand.name} {brand.suffix} — een
+              initiatief van <span className="text-dark-fg">{brand.founder}</span>.
+            </div>
+            <div>Demo prijsconfigurator. Alle bedragen zijn indicatief.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
