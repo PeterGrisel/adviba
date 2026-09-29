@@ -166,17 +166,29 @@ export function Configurator() {
     }));
   };
 
-  const handleLeadSubmit = (_data: LeadFormData) => {
-    setStatus('submitted');
+  const handleLeadSubmit = async (lead: LeadFormData, honeypot: string) => {
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          lead,
+          config,
+          company: honeypot,
+          source: {
+            page: window.location.href,
+            referrer: document.referrer,
+            query: window.location.search,
+          },
+        }),
+      });
+      if (!res.ok) return false;
+      setStatus('submitted');
+      return true;
+    } catch {
+      return false;
+    }
   };
-
-  if (!hydrated) {
-    return (
-      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
-        <div className="h-96 animate-pulse rounded-card bg-surface" />
-      </div>
-    );
-  }
 
   const stepVariants = {
     enter: (dir: 1 | -1) => ({ x: dir * 20, opacity: 0 }),
@@ -406,7 +418,7 @@ function ResultStep({
   onBack,
 }: {
   config: Configuration;
-  onSubmit: (data: LeadFormData) => void;
+  onSubmit: (data: LeadFormData, honeypot: string) => Promise<boolean>;
   onBack: () => void;
 }) {
   const breakdown = calculatePrice(config);

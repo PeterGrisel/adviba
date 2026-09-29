@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useCallback, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import type { ProductId } from '@/lib/types';
 import type { BrandVariant } from './BrandMark';
 
@@ -52,6 +52,17 @@ export function BrandThemeProvider({
   const requestProduct = useCallback((id: ProductId) => {
     setRequested((r) => ({ id, nonce: (r?.nonce ?? 0) + 1 }));
   }, []);
+
+  // ?merk=rolluiken (o.a. vanaf maasenwaalrolluiken.nl) → dat merk tonen en
+  // het product in de configurator voorselecteren.
+  useEffect(() => {
+    const merk = new URLSearchParams(window.location.search).get('merk');
+    if (merk && (brandOrder as string[]).includes(merk)) {
+      setBrand(merk as BrandVariant);
+      setInteracted(true);
+      requestProduct(brandToProduct[merk as BrandVariant]);
+    }
+  }, [requestProduct]);
 
   return (
     <BrandThemeContext.Provider

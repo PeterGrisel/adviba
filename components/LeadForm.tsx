@@ -3,9 +3,11 @@
 import { useId, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import type { LeadFormData } from '@/lib/types';
+import { brand } from '@/data/configurator';
 
 interface Props {
-  onSubmit: (data: LeadFormData) => void;
+  /** Geeft true terug als de aanvraag is afgeleverd. */
+  onSubmit: (data: LeadFormData, honeypot: string) => Promise<boolean>;
   onBack: () => void;
 }
 
@@ -21,6 +23,9 @@ const empty: LeadFormData = {
 export function LeadForm({ onSubmit, onBack }: Props) {
   const [data, setData] = useState<LeadFormData>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof LeadFormData, string>>>({});
+  const [honeypot, setHoneypot] = useState('');
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const update = <K extends keyof LeadFormData>(key: K, value: LeadFormData[K]) => {
     setData((d) => ({ ...d, [key]: value }));
@@ -40,14 +45,30 @@ export function LeadForm({ onSubmit, onBack }: Props) {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
-    onSubmit(data);
+    if (sending || !validate()) return;
+    setSending(true);
+    setFailed(false);
+    const ok = await onSubmit(data, honeypot);
+    setSending(false);
+    if (!ok) setFailed(true);
   };
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      {/* Honeypot tegen spambots — onzichtbaar voor mensen */}
+      <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Bedrijf
+          <input
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </label>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field
           label="Voornaam"
@@ -104,6 +125,20 @@ export function LeadForm({ onSubmit, onBack }: Props) {
         </span>
       </label>
 
+      {failed && (
+        <p role="alert" className="rounded-card border border-[#B4463B]/40 bg-[#B4463B]/5 p-4 text-[14px] leading-relaxed text-ink">
+          Versturen lukte niet. Bel of mail ons gerust direct:{' '}
+          <a href={brand.helpPhoneHref} className="font-semibold underline">
+            {brand.helpPhone}
+          </a>{' '}
+          of{' '}
+          <a href={`mailto:${brand.email}`} className="font-semibold underline">
+            {brand.email}
+          </a>
+          .
+        </p>
+      )}
+
       <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="button"
@@ -114,9 +149,11 @@ export function LeadForm({ onSubmit, onBack }: Props) {
         </button>
         <button
           type="submit"
-          className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 text-[15px] font-semibold text-on-accent transition-all hover:brightness-110 hover:shadow-elevated"
+          disabled={sending}
+          aria-busy={sending}
+          className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 text-[15px] font-semibold text-on-accent transition-all hover:brightness-110 hover:shadow-elevated disabled:cursor-wait disabled:opacity-70"
         >
-          Stuur mijn prijsindicatie
+          {sending ? 'Versturen…' : 'Stuur mijn prijsindicatie'}
           <ArrowRight
             className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
             strokeWidth={2}

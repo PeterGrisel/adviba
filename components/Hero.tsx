@@ -190,21 +190,22 @@ export function Hero() {
               </span>
             </div>
 
-            <h1 className="mt-5 font-display text-[clamp(34px,min(6.2vw,8.2svh),76px)] font-semibold leading-[1.04] tracking-tight text-white [text-shadow:0_2px_24px_rgb(0_0_0/0.55)]">
+            <p className="mt-5 font-display text-[clamp(34px,min(6.2vw,8.2svh),76px)] font-semibold leading-[1.04] tracking-tight text-white [text-shadow:0_2px_24px_rgb(0_0_0/0.55)]">
               {slide.headlinePrefix}{' '}
               <span className={[slide.colorClass, 'font-bold'].join(' ')}>
                 {slide.headlineAccent}
               </span>
-            </h1>
+            </p>
 
             <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-white/90 [text-shadow:0_1px_2px_rgb(0_0_0/0.6),0_1px_16px_rgb(0_0_0/0.55)] md:text-[18px]">
               {slide.body}
             </p>
 
-            <div className="mt-4 inline-flex items-center gap-2 font-slab text-[14px] italic text-white/85 [text-shadow:0_1px_8px_rgb(0_0_0/0.6)]">
-              <MapPin className="h-4 w-4 text-white" strokeWidth={1.75} />
-              Lokaal geregeld in Maas en Waal
-            </div>
+            {/* Vaste H1 (de grote kop hierboven wisselt per slide) */}
+            <h1 className="mt-4 inline-flex items-center gap-2 font-slab text-[14px] font-normal italic text-white/85 [text-shadow:0_1px_8px_rgb(0_0_0/0.6)]">
+              <MapPin className="h-4 w-4 flex-none text-white" strokeWidth={1.75} />
+              Zonwering, rolluiken &amp; horren in Maas en Waal
+            </h1>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a

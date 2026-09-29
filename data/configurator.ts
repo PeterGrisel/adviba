@@ -23,6 +23,10 @@ export const brand = {
   showroom: 'Showroom elke donderdag op afspraak',
   appointmentUrl: 'https://www.adviba.nl/book-appointment/',
   website: 'https://www.adviba.nl',
+  socials: [
+    'https://www.facebook.com/adviba.nl',
+    'https://www.instagram.com/adviba_daglichtoplossingen',
+  ],
 };
 
 /**

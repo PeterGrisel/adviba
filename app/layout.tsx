@@ -1,11 +1,26 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { SmoothScroll } from '@/components/SmoothScroll';
+import { siteDescription, siteName, siteTitle, siteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Maas en Waal Zonwering & Rolluiken — configureer online',
-  description:
-    'Streekspecialist voor zonwering, rolluiken en terrasoverkappingen. Van Heerewaarden tot Ewijk. Prijsindicatie in 2 minuten. Persoonlijk advies van adviba.',
+  metadataBase: new URL(siteUrl),
+  title: { default: siteTitle, template: `%s — ${siteName}` },
+  description: siteDescription,
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    locale: 'nl_NL',
+    url: '/',
+    siteName,
+    title: siteTitle,
+    description: siteDescription,
+  },
+  twitter: { card: 'summary_large_image', title: siteTitle, description: siteDescription },
+  robots: { index: true, follow: true },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
