@@ -1,19 +1,9 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import Image from 'next/image';
 import { Leaf } from 'lucide-react';
+import bus from '@/public/media/adviba-bus.webp';
 
-const CANDIDATES = ['adviba-bus.webp', 'adviba-bus.png', 'adviba-bus.jpg'];
-
-/**
- * "adviba rijdt groen!" met de bedrijfsbus, bovenin de footer. Verschijnt
- * zodra public/media/adviba-bus.(webp|png|jpg) bestaat.
- */
+/** "adviba rijdt groen!" met de bedrijfsbus, bovenin de footer. */
 export function AdvibaVan() {
-  const dir = path.join(process.cwd(), 'public', 'media');
-  const file = CANDIDATES.find((f) => fs.existsSync(path.join(dir, f)));
-  if (!file) return null;
-
   return (
     <div className="border-b border-dark-line">
       <div className="mx-auto grid max-w-6xl items-center gap-6 px-5 pb-4 pt-10 md:grid-cols-[1fr_1.1fr] md:gap-10 md:px-8 md:pt-12">
@@ -36,10 +26,9 @@ export function AdvibaVan() {
             aria-hidden
           />
           <Image
-            src={`/media/${file}`}
+            src={bus}
             alt="Bedrijfsbus van adviba, daglichtoplossingen"
-            width={1774}
-            height={887}
+            placeholder="blur"
             sizes="(min-width: 768px) 560px, 100vw"
             className="relative mx-auto h-auto w-full max-w-[560px]"
           />
