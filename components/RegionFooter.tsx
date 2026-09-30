@@ -1,9 +1,10 @@
 'use client';
 
-import { ArrowRight, CalendarDays, Clock, MapPin, Mail } from 'lucide-react';
+import { ArrowRight, CalendarDays, Clock, MapPin, Mail, Phone } from 'lucide-react';
 import { brand, region } from '@/data/configurator';
 import { AdvibaLogo } from './AdvibaLogo';
 import { AlecAvatar } from './BelAlec';
+import { WhatsAppIcon, whatsappHref } from './WhatsApp';
 import { useBrandTheme } from './BrandTheme';
 import type { ProductId } from '@/lib/types';
 
@@ -16,7 +17,7 @@ const serviceLinks: { label: string; href: string; product?: ProductId }[] = [
 ];
 
 export function RegionFooter({ children }: { children?: React.ReactNode }) {
-  const { markInteracted, requestProduct } = useBrandTheme();
+  const { brand: active, markInteracted, requestProduct } = useBrandTheme();
   return (
     <footer>
       {/* Amber CTA-band — adviba stijl */}
@@ -104,11 +105,21 @@ export function RegionFooter({ children }: { children?: React.ReactNode }) {
                   href={brand.helpPhoneHref}
                   className="group inline-flex items-center gap-3 text-dark-fg transition-colors hover:text-accent-bright"
                 >
-                  <AlecAvatar className="h-9 w-9 ring-accent-bright transition-transform group-hover:scale-105" />
-                  <span className="flex flex-col leading-tight">
-                    <span className="text-[12px] text-dark-fg/60">Bel Alec</span>
-                    {brand.helpPhone}
+                  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent-bright text-dark transition-transform group-hover:scale-105">
+                    <Phone className="h-4 w-4" strokeWidth={2.25} />
                   </span>
+                  {brand.helpPhone}
+                </a>
+                <a
+                  href={whatsappHref(active)}
+                  target="_blank"
+                  rel="noopener"
+                  className="group inline-flex items-center gap-3 text-dark-fg transition-colors hover:text-[#25D366]"
+                >
+                  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-white/5 transition-transform group-hover:scale-105">
+                    <WhatsAppIcon className="h-6 w-6" />
+                  </span>
+                  WhatsApp ons
                 </a>
                 <a
                   href={`mailto:${brand.email}`}

@@ -35,7 +35,7 @@ export function ProjectGallery() {
             </div>
             <h2
               id="projecten-titel"
-              className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-[26px] font-semibold leading-tight tracking-tight text-ink md:text-[36px]"
+              className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-2 font-display text-[26px] font-semibold leading-tight tracking-tight text-ink md:text-[36px]"
             >
               Echt werk van
               <AdvibaLogo className="h-7 md:h-10" plate={false} />

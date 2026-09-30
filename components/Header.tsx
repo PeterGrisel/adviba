@@ -1,10 +1,10 @@
 'use client';
 
-import { PhoneCall } from 'lucide-react';
 import { brand } from '@/data/configurator';
 import { BrandMark } from './BrandMark';
 import { useBrandTheme } from './BrandTheme';
 import { RegionMapPopover } from './RegionMapPopover';
+import { WhatsAppIcon, whatsappHref } from './WhatsApp';
 
 export function Header() {
   const { brand: active } = useBrandTheme();
@@ -38,12 +38,14 @@ export function Header() {
         <div className="flex items-center gap-2 lg:gap-5">
           <RegionMapPopover />
           <a
-            href={brand.helpPhoneHref}
-            aria-label={brand.helpCta}
-            className="group inline-flex h-10 w-10 flex-none items-center justify-center gap-2 rounded-full border border-accent-bright/50 bg-dark-deep sm:h-auto sm:w-auto sm:px-3.5 sm:py-2 text-[13px] text-dark-fg transition-all hover:border-accent-bright hover:shadow-warm"
+            href={whatsappHref(active)}
+            target="_blank"
+            rel="noopener"
+            aria-label="WhatsApp adviba"
+            className="group inline-flex h-10 w-10 flex-none items-center justify-center gap-2 rounded-full border border-[#25D366]/50 bg-dark-deep text-[13px] text-dark-fg transition-all hover:border-[#25D366] hover:shadow-[0_8px_24px_rgba(37,211,102,0.18)] sm:h-auto sm:w-auto sm:py-2 sm:pl-2.5 sm:pr-3.5"
           >
-            <PhoneCall className="h-4 w-4 text-accent-bright sm:h-3.5 sm:w-3.5" strokeWidth={1.75} />
-            <span className="hidden whitespace-nowrap font-medium sm:inline">{brand.helpCta}</span>
+            <WhatsAppIcon className="h-5 w-5 sm:h-[18px] sm:w-[18px]" />
+            <span className="hidden whitespace-nowrap font-medium sm:inline">WhatsApp</span>
           </a>
         </div>
       </div>

@@ -16,6 +16,7 @@ export const brand = {
   // Contactgegevens van adviba (bron: adviba.nl/contact)
   helpPhone: '+31 (0)6 10 26 00 00',
   helpPhoneHref: 'tel:+31610260000',
+  whatsappNumber: '31610260000',
   email: 'info@adviba.nl',
   address: 'Expeditieweg 10-14',
   postalCity: '6657 KL Boven-Leeuwen',
