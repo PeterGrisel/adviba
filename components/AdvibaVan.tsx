@@ -38,8 +38,8 @@ export function AdvibaVan() {
           <Image
             src={`/media/${file}`}
             alt="Bedrijfsbus van adviba, daglichtoplossingen"
-            width={1600}
-            height={800}
+            width={1774}
+            height={887}
             sizes="(min-width: 768px) 560px, 100vw"
             className="relative mx-auto h-auto w-full max-w-[560px]"
           />
