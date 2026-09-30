@@ -1,10 +1,17 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import type { Product } from '@/lib/types';
 import { formatCurrency } from '@/lib/calculatePrice';
+import { BrandMark, type BrandVariant } from './BrandMark';
+import { productToBrand } from './BrandTheme';
+
+const tint: Record<BrandVariant, string> = {
+  zonwering: 'bg-[#f5a623]/10',
+  rolluiken: 'bg-brand-orange/10',
+  horren: 'bg-brand-green/10',
+};
 
 interface Props {
   product: Product;
@@ -26,16 +33,17 @@ export function ProductCard({ product, selected, onSelect }: Props) {
           : 'border-line hover:border-ink/40 hover:shadow-card',
       ].join(' ')}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-canvas md:aspect-[16/10]">
-        <Image
-          src={product.image}
-          alt=""
-          fill
-          sizes="(min-width: 1280px) 220px, (min-width: 768px) 30vw, 50vw"
-          quality={70}
-          className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+      {/* Merkteken i.p.v. foto: projectfoto's staan in de projectenslider */}
+      <div
+        className={[
+          'relative grid h-24 w-full place-items-center overflow-hidden md:h-28',
+          tint[productToBrand[product.id]],
+        ].join(' ')}
+      >
+        <BrandMark
+          variant={productToBrand[product.id]}
+          className="h-14 w-16 transition-transform duration-500 ease-out group-hover:-translate-y-0.5 group-hover:scale-105 md:h-16 md:w-20"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
         <motion.div
           initial={false}
