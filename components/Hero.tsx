@@ -7,7 +7,6 @@ import { brand } from '@/data/configurator';
 import Image from 'next/image';
 import { BrandMark, type BrandVariant } from './BrandMark';
 import { imageSrc } from '@/lib/remoteImages';
-import { AdvibaLogo } from './AdvibaLogo';
 import { brandToProduct, useBrandTheme } from './BrandTheme';
 
 interface Slide {
@@ -149,19 +148,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-dark/45 via-dark/55 to-dark/80 md:bg-transparent md:bg-gradient-to-r md:from-dark/85 md:via-dark/45 md:to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-dark/80 to-transparent" />
 
-      </div>
-
-      {/* Top-right: onderdeel van adviba */}
-      <div className="pointer-events-none absolute right-5 top-5 hidden md:block md:right-8">
-        <div className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-dark-deep/75 px-3 py-1.5">
-          <span className="text-[11px] uppercase tracking-[0.16em] text-dark-fg/75">
-            Onderdeel van
-          </span>
-          <AdvibaLogo className="h-5" />
-          <span className="hidden text-[11px] uppercase tracking-[0.16em] text-dark-fg/75 lg:inline">
-            · Lokaal vakmanschap
-          </span>
-        </div>
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-5 py-8 md:px-8 md:py-12">

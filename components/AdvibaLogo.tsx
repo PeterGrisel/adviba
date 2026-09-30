@@ -10,15 +10,25 @@ import { imageSrc } from '@/lib/remoteImages';
  * blijft, als link naar adviba.nl (moedersite). Laadt het logo niet, dan
  * valt het terug op de woordnaam.
  */
-export function AdvibaLogo({ className = 'h-5' }: { className?: string }) {
+export function AdvibaLogo({
+  className = 'h-5',
+  linked = true,
+}: {
+  className?: string;
+  /** false als het logo al binnen een andere link staat */
+  linked?: boolean;
+}) {
   const [failed, setFailed] = useState(false);
+  const Wrapper = linked ? 'a' : 'span';
 
   return (
-    <a
-      href={brand.website}
-      target="_blank"
-      rel="noopener"
-      title="adviba daglichtoplossingen, showroom in Boven-Leeuwen"
+    <Wrapper
+      {...(linked && {
+        href: brand.website,
+        target: '_blank',
+        rel: 'noopener',
+        title: 'adviba daglichtoplossingen, showroom in Boven-Leeuwen',
+      })}
       className="inline-flex items-center rounded-md bg-white px-1.5 py-1 transition-shadow hover:shadow-warm"
     >
       {failed ? (
@@ -36,6 +46,6 @@ export function AdvibaLogo({ className = 'h-5' }: { className?: string }) {
           onError={() => setFailed(true)}
         />
       )}
-    </a>
+    </Wrapper>
   );
 }

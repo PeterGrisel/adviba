@@ -51,7 +51,7 @@ export function ProductCard({ product, selected, onSelect }: Props) {
       </div>
 
       <div className="flex flex-1 flex-col gap-1.5 p-3.5 md:p-5">
-        <h3 className="break-words text-[16px] font-semibold leading-tight tracking-tight text-ink md:text-lg">{product.name}</h3>
+        <h3 className="break-words text-[16px] font-semibold leading-tight tracking-tight text-ink md:text-lg">{product.name.replace('overkapping', '\u00ADoverkapping')}</h3>
         <p className="hidden text-[14px] leading-snug text-ink-muted sm:line-clamp-2">{product.description}</p>
         <div className="mt-auto pt-2 md:pt-3">
           <span className="text-[11px] uppercase tracking-[0.12em] text-ink-muted md:text-[12px]">Vanaf</span>
