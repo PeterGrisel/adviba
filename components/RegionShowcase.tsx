@@ -15,6 +15,8 @@ import { CalendarDays, Leaf, MapPin } from 'lucide-react';
 import { brand } from '@/data/configurator';
 import { imageSrc, type ImageKey } from '@/lib/remoteImages';
 import bus from '@/public/media/adviba-bus.webp';
+import showroomFoto from '@/public/media/showroom-alec.jpg';
+import type { StaticImageData } from 'next/image';
 
 interface Stop {
   id: string;
@@ -24,6 +26,10 @@ interface Stop {
   caption: string;
   village: string;
   image?: ImageKey;
+  /** lokale foto (i.p.v. Wikimedia) */
+  photo?: StaticImageData;
+  /** object-position, bv. om een persoon in beeld te houden op mobiel */
+  focus?: string;
   credit?: string;
   showroom?: boolean;
 }
@@ -38,8 +44,10 @@ const stops: Stop[] = [
     id: 'showroom',
     at: 0.9,
     label: 'Showroom',
-    caption: 'Hier begint het, in',
+    caption: 'Hier begint het: Alec in onze showroom in',
     village: 'Boven-Leeuwen',
+    photo: showroomFoto,
+    focus: '36% 40%',
     showroom: true,
   },
   {
@@ -177,26 +185,37 @@ function Journey() {
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0"
               >
-                {stop.image ? (
-                  <>
-                    <Image
-                      src={imageSrc(stop.image)}
-                      alt={`${stop.caption} ${stop.village}`}
-                      fill
-                      sizes="(min-width: 1152px) 1088px, 100vw"
-                      quality={70}
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
-                  </>
-                ) : (
-                  <ShowroomCard />
+                <Image
+                  src={stop.photo ?? imageSrc(stop.image!)}
+                  alt={
+                    stop.showroom
+                      ? 'Alec van adviba in de showroom in Boven-Leeuwen, met stalen van zonweringsdoek'
+                      : `${stop.caption} ${stop.village}`
+                  }
+                  fill
+                  sizes="(min-width: 1152px) 1088px, 100vw"
+                  quality={72}
+                  placeholder={stop.photo ? 'blur' : 'empty'}
+                  className="object-cover"
+                  style={{ objectPosition: stop.focus ?? 'center' }}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+                {stop.showroom && (
+                  <a
+                    href={brand.appointmentUrl}
+                    target="_blank"
+                    rel="noopener"
+                    className="absolute bottom-5 right-5 z-10 hidden items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-[13px] font-medium text-ink shadow-card transition-colors hover:bg-white sm:inline-flex md:bottom-7 md:right-7"
+                  >
+                    <CalendarDays className="h-4 w-4" strokeWidth={1.75} />
+                    Plan een showroombezoek
+                  </a>
                 )}
                 <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
                   <div
                     className={[
                       'flex items-center gap-1.5 text-[11px] uppercase tracking-[0.14em] md:text-[12px]',
-                      stop.image ? 'text-white/85' : 'text-ink-muted',
+                      'text-white/85',
                     ].join(' ')}
                   >
                     <MapPin className="h-3 w-3" strokeWidth={2} />
@@ -205,7 +224,7 @@ function Journey() {
                   <div
                     className={[
                       'mt-1 font-display text-[24px] font-semibold leading-tight tracking-tight md:text-[32px]',
-                      stop.image ? 'text-white' : 'text-ink',
+                      'text-white',
                     ].join(' ')}
                   >
                     {stop.village}
@@ -222,7 +241,7 @@ function Journey() {
                   className={[
                     'h-1.5 rounded-full transition-all duration-500',
                     i === active ? 'w-5 bg-white' : 'w-1.5 bg-white/50',
-                    !stops[active].image && (i === active ? '!bg-accent' : '!bg-ink/20'),
+                    
                   ].join(' ')}
                 />
               ))}
@@ -294,28 +313,6 @@ function Journey() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function ShowroomCard() {
-  return (
-    <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-surface via-canvas to-accent-soft/40">
-      <div className="px-6 pb-20 text-center md:pb-16">
-        <Image src={bus} alt="De bus van adviba" sizes="360px" className="mx-auto h-auto w-[62%] max-w-[360px]" />
-        <p className="mt-3 text-[13px] text-ink-muted md:text-[14px]">
-          {brand.address}, {brand.postalCity} · {brand.showroom.toLowerCase()}
-        </p>
-        <a
-          href={brand.appointmentUrl}
-          target="_blank"
-          rel="noopener"
-          className="mt-3 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-[13px] font-medium text-ink transition-colors hover:border-ink/40"
-        >
-          <CalendarDays className="h-4 w-4" strokeWidth={1.75} />
-          Plan een showroombezoek
-        </a>
       </div>
     </div>
   );
