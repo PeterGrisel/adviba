@@ -86,7 +86,7 @@ export const products: Record<ProductId, Product> = {
     longDescription:
       'Discrete zonwering die warmte weert en zicht behoudt. Perfect voor moderne architectuur waar strakke lijnen belangrijk zijn.',
     image:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+      '/projects/screens-gevel.jpg',
     basePrice: 795,
     pricePerM2: 115,
     dimensions: {
@@ -165,7 +165,7 @@ export const products: Record<ProductId, Product> = {
     longDescription:
       'Robuuste rolluiken die je woning beschermen en verduisteren. Beschikbaar met verhoogde isolatie voor slaapkamers.',
     image:
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1600&q=80',
+      '/projects/rolluik-tuinkamer.jpg',
     basePrice: 895,
     pricePerM2: 135,
     dimensions: {
@@ -244,7 +244,7 @@ export const products: Record<ProductId, Product> = {
     longDescription:
       'Discrete horren die passen bij elk raam of deur. Bescherming tegen muggen, wespen en vliegen, zonder je zicht of daglicht op te offeren.',
     image:
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
+      '/projects/hor-dakraam.jpg',
     basePrice: 245,
     pricePerM2: 85,
     dimensions: {
