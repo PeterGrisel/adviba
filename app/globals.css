@@ -147,3 +147,31 @@ input[type='range']::-moz-range-thumb {
   background-color: rgb(var(--color-accent-soft));
   color: rgb(var(--color-ink));
 }
+
+/* Regiokaart: showroom-marker in de merkkleur, met zachte puls */
+.region-map-showroom {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgb(var(--color-accent-bright));
+  border: 2.5px solid #fff;
+  box-shadow: 0 0 0 0 rgb(var(--color-accent-bright) / 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
+  animation: region-pulse 2.2s ease-out infinite;
+  cursor: pointer;
+}
+.region-map-showroom--static {
+  width: 11px;
+  height: 11px;
+  border-width: 2px;
+  animation: none;
+  cursor: default;
+}
+@keyframes region-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(var(--color-accent-bright) / 0.55), 0 1px 4px rgba(0, 0, 0, 0.3); }
+  70% { box-shadow: 0 0 0 12px rgb(var(--color-accent-bright) / 0), 0 1px 4px rgba(0, 0, 0, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgb(var(--color-accent-bright) / 0), 0 1px 4px rgba(0, 0, 0, 0.3); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .region-map-showroom { animation: none; }
+}

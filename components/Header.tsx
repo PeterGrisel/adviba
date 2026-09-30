@@ -1,9 +1,10 @@
 'use client';
 
-import { MapPin, PhoneCall } from 'lucide-react';
+import { PhoneCall } from 'lucide-react';
 import { brand } from '@/data/configurator';
 import { BrandMark } from './BrandMark';
 import { useBrandTheme } from './BrandTheme';
+import { RegionMapPopover } from './RegionMapPopover';
 
 export function Header() {
   const { brand: active } = useBrandTheme();
@@ -34,11 +35,8 @@ export function Header() {
           </span>
         </a>
 
-        <div className="flex items-center gap-5">
-          <span className="hidden items-center gap-1.5 text-[13px] italic text-dark-fg/75 lg:inline-flex font-slab">
-            <MapPin className="h-3.5 w-3.5 text-accent-bright" strokeWidth={1.75} />
-            {brand.tagline}
-          </span>
+        <div className="flex items-center gap-2 lg:gap-5">
+          <RegionMapPopover />
           <a
             href={brand.helpPhoneHref}
             aria-label={brand.helpCta}
