@@ -165,7 +165,7 @@ export const products: Record<ProductId, Product> = {
     longDescription:
       'Robuuste rolluiken die je woning beschermen en verduisteren. Beschikbaar met verhoogde isolatie voor slaapkamers.',
     image:
-      '/projects/rolluik-tuinkamer.jpg',
+      '/projects/rolluiken-achtergevel.jpg',
     basePrice: 895,
     pricePerM2: 135,
     dimensions: {
