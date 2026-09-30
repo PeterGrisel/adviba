@@ -120,7 +120,7 @@ export function RegionShowcase() {
 
         <GreenRide />
 
-        <p className="mt-6 text-[11px] leading-relaxed text-ink-muted">
+        <p className="mt-8 text-[11px] leading-relaxed text-ink-muted">
           Beeld: Wikimedia Commons.{' '}
           {shots
             .filter((s) => s.credit)
@@ -161,7 +161,7 @@ function GreenRide() {
   const x = useTransform(smooth, (p) => (1 - p) * Math.max(0, trackW - vanW));
 
   return (
-    <div className="mt-8 flex flex-col gap-4 md:mt-10 md:flex-row md:items-end md:gap-10">
+    <div className="mt-10 flex flex-col gap-3 md:mt-12 md:flex-row md:items-end md:gap-10">
       <div className="flex-none md:w-[240px]">
         <div className="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-brand-green/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3d862c]">
           <Leaf className="h-3.5 w-3.5" strokeWidth={2} />
@@ -173,7 +173,7 @@ function GreenRide() {
         </p>
       </div>
 
-      <div ref={road} className="relative h-[92px] flex-1 md:h-[110px]" aria-hidden>
+      <div ref={road} className="relative h-[96px] flex-none md:h-[110px] md:flex-1" aria-hidden>
         <div className="absolute inset-x-0 bottom-[10px] h-3 rounded-full bg-[#dcd5c3]">
           <div className="absolute inset-x-3 top-1/2 h-px -translate-y-1/2 border-t-2 border-dashed border-white/90" />
         </div>
