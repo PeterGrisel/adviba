@@ -81,6 +81,7 @@ export function RegionShowcase() {
           {shots.map((s) => (
             <figure
               key={s.id}
+              title={s.credit ? `Foto: ${s.credit}` : undefined}
               className="group relative aspect-[4/5] overflow-hidden rounded-card border border-line bg-surface"
             >
               <Image
@@ -120,18 +121,6 @@ export function RegionShowcase() {
 
         <GreenRide />
 
-        <p className="mt-8 text-[11px] leading-relaxed text-ink-muted">
-          Beeld: Wikimedia Commons.{' '}
-          {shots
-            .filter((s) => s.credit)
-            .map((s, i) => (
-              <span key={s.id}>
-                {i > 0 && ' · '}
-                {s.village}: {s.credit}
-              </span>
-            ))}
-          .
-        </p>
       </div>
     </section>
   );
