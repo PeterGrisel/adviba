@@ -6,14 +6,8 @@ import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react';
-import type { BrandVariant } from './BrandMark';
+import { BrandMark, type BrandVariant } from './BrandMark';
 import type { ProjectPhoto } from '@/data/projects';
-
-const dot: Record<BrandVariant, string> = {
-  zonwering: 'bg-[#f5a623]',
-  rolluiken: 'bg-brand-orange',
-  horren: 'bg-brand-green',
-};
 
 const filters: { id: 'alle' | BrandVariant; label: string }[] = [
   { id: 'alle', label: 'Alle' },
@@ -115,7 +109,7 @@ export function ProjectSlider({ projects }: { projects: ProjectPhoto[] }) {
                 ].join(' ')}
               >
                 {f.id !== 'alle' && (
-                  <span className={`h-2 w-2 rounded-full ${dot[f.id]}`} aria-hidden />
+                  <BrandMark variant={f.id} onDark={filter === f.id} className="h-4 w-5 flex-none" />
                 )}
                 {f.label}
                 <span className="text-[11px] opacity-60">{counts[f.id]}</span>
@@ -175,8 +169,8 @@ export function ProjectSlider({ projects }: { projects: ProjectPhoto[] }) {
                   <Expand className="h-3.5 w-3.5" strokeWidth={2} />
                 </span>
                 <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-3.5 pb-3.5 pt-12 text-white">
-                  <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] opacity-90">
-                    <span className={`h-2 w-2 rounded-full ${dot[p.label]}`} aria-hidden />
+                  <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] opacity-90">
+                    <BrandMark variant={p.label} onDark className="h-5 w-6 flex-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]" />
                     {p.product}
                     {p.place && <span className="font-normal normal-case tracking-normal">· {p.place}</span>}
                   </span>
