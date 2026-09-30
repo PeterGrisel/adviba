@@ -7,7 +7,6 @@ import { RegionFooter } from '@/components/RegionFooter';
 import { BrandThemeProvider } from '@/components/BrandTheme';
 import { StructuredData } from '@/components/StructuredData';
 import { AdvibaFloater } from '@/components/AdvibaFloater';
-import { AdvibaVan } from '@/components/AdvibaVan';
 
 export default function Page() {
   return (
@@ -18,9 +17,7 @@ export default function Page() {
       <Configurator />
       <ProjectGallery />
       <RegionShowcase />
-      <RegionFooter>
-        <AdvibaVan />
-      </RegionFooter>
+      <RegionFooter />
       <AdvibaFloater />
     </BrandThemeProvider>
   );

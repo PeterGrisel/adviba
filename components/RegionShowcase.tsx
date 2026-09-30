@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { imageSrc, type ImageKey } from '@/lib/remoteImages';
+import { VanRoad } from './VanRoad';
 
 interface Shot {
   file: ImageKey;
@@ -96,6 +97,8 @@ export function RegionShowcase() {
             </figure>
           ))}
         </div>
+
+        <VanRoad />
 
         <p className="mt-6 text-[11px] leading-relaxed text-ink-muted">
           Beeld: Wikimedia Commons.{' '}
