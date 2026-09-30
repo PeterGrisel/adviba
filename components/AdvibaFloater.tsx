@@ -52,8 +52,8 @@ export function AdvibaFloater() {
             <span className="text-[10.5px] font-medium uppercase tracking-[0.16em] text-ink-muted">
               Onderdeel van
             </span>
-            <span className="mt-1 -ml-1.5">
-              <AdvibaLogo className="h-6" linked={false} />
+            <span className="mt-1">
+              <AdvibaLogo className="h-6" linked={false} plate={false} />
             </span>
           </span>
           <span className="h-9 w-px bg-line" aria-hidden />

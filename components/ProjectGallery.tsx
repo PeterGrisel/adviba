@@ -38,7 +38,7 @@ export function ProjectGallery() {
               className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-[26px] font-semibold leading-tight tracking-tight text-ink md:text-[36px]"
             >
               Echt werk van
-              <AdvibaLogo className="h-7 md:h-10" />
+              <AdvibaLogo className="h-7 md:h-10" plate={false} />
             </h2>
           </div>
           <p className="max-w-sm text-[14px] leading-relaxed text-ink-muted md:text-right">

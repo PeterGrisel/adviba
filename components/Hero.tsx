@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowDown, MapPin, Pause, PhoneCall, Play } from 'lucide-react';
+import { ArrowDown, MapPin, Pause, Play } from 'lucide-react';
 import { brand } from '@/data/configurator';
 import Image from 'next/image';
 import { BrandMark, type BrandVariant } from './BrandMark';
+import { BelAlecButton } from './BelAlec';
 import { imageSrc } from '@/lib/remoteImages';
 import { brandToProduct, useBrandTheme } from './BrandTheme';
 
@@ -211,14 +212,7 @@ export function Hero() {
                   strokeWidth={2.25}
                 />
               </a>
-              <a
-                href={brand.helpPhoneHref}
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-dark-deep/70 px-5 text-[15px] font-medium text-dark-fg transition-colors hover:border-white"
-              >
-                <PhoneCall className="h-3.5 w-3.5" strokeWidth={1.75} />
-                <span className="sm:hidden">Bel</span>
-                <span className="hidden sm:inline">of bel adviba</span>
-              </a>
+              <BelAlecButton />
             </div>
           </motion.div>
         </AnimatePresence>

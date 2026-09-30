@@ -1,8 +1,9 @@
 'use client';
 
-import { ArrowRight, CalendarDays, Clock, MapPin, Phone, Mail } from 'lucide-react';
+import { ArrowRight, CalendarDays, Clock, MapPin, Mail } from 'lucide-react';
 import { brand, region } from '@/data/configurator';
 import { AdvibaLogo } from './AdvibaLogo';
+import { AlecAvatar } from './BelAlec';
 import { useBrandTheme } from './BrandTheme';
 import type { ProductId } from '@/lib/types';
 
@@ -14,7 +15,7 @@ const serviceLinks: { label: string; href: string; product?: ProductId }[] = [
   { label: 'Werkgebied', href: '#werkgebied' },
 ];
 
-export function RegionFooter() {
+export function RegionFooter({ children }: { children?: React.ReactNode }) {
   const { markInteracted, requestProduct } = useBrandTheme();
   return (
     <footer>
@@ -24,8 +25,9 @@ export function RegionFooter() {
         className="group block bg-accent-bright transition-[background-color,filter] duration-500 hover:brightness-110"
       >
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 px-5 py-4 text-center md:px-8 md:py-5">
+          <AlecAvatar className="h-9 w-9 ring-dark/20 md:h-10 md:w-10" />
           <span className="font-display text-[16px] font-semibold text-dark md:text-[19px]">
-            Op zoek naar persoonlijk advies uit de streek? Bel adviba.
+            Persoonlijk advies uit de streek? Bel Alec van adviba.
           </span>
           <ArrowRight
             className="hidden h-5 w-5 flex-none text-dark transition-transform group-hover:translate-x-0.5 md:block"
@@ -36,6 +38,7 @@ export function RegionFooter() {
 
       {/* Donker corpus */}
       <div className="bg-dark text-dark-fg">
+        {children}
         <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
           <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr] md:gap-14">
             {/* Kolom 1 — merk + verhaal */}
@@ -101,10 +104,11 @@ export function RegionFooter() {
                   href={brand.helpPhoneHref}
                   className="group inline-flex items-center gap-3 text-dark-fg transition-colors hover:text-accent-bright"
                 >
-                  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent-bright text-dark transition-transform group-hover:scale-105">
-                    <Phone className="h-4 w-4" strokeWidth={2.25} />
+                  <AlecAvatar className="h-9 w-9 ring-accent-bright transition-transform group-hover:scale-105" />
+                  <span className="flex flex-col leading-tight">
+                    <span className="text-[12px] text-dark-fg/60">Bel Alec</span>
+                    {brand.helpPhone}
                   </span>
-                  {brand.helpPhone}
                 </a>
                 <a
                   href={`mailto:${brand.email}`}
