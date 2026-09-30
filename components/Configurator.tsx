@@ -28,6 +28,7 @@ import { ConfigurationSummary } from './ConfigurationSummary';
 import { LeadForm } from './LeadForm';
 import { SuccessState } from './SuccessState';
 import { AnimatedNumber } from './AnimatedNumber';
+import { BrandLogos } from './BrandLogos';
 import { productToBrand, useBrandTheme } from './BrandTheme';
 
 const STORAGE_KEY = 'adviba.configurator.v1';
@@ -386,6 +387,8 @@ export function Configurator() {
           <ConfigurationSummary config={config} />
         </div>
       </div>
+
+      <BrandLogos />
     </div>
   );
 }
