@@ -19,16 +19,24 @@ export function AdvibaFloater() {
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 900);
-    const footer = document.querySelector('footer');
-    const io = footer
-      ? new IntersectionObserver(([e]) => setFooterVisible(e.isIntersecting), {
-          rootMargin: '0px 0px -80px 0px',
-        })
-      : null;
-    if (footer && io) io.observe(footer);
+    // Verbergen boven de footer (daar staat het logo al) en boven secties
+    // die de hoek rechtsonder zelf gebruiken (data-hide-floater).
+    const targets = [
+      document.querySelector('footer'),
+      ...Array.from(document.querySelectorAll('[data-hide-floater]')),
+    ].filter(Boolean) as Element[];
+    const visible = new Set<Element>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+        setFooterVisible(visible.size > 0);
+      },
+      { rootMargin: '0px 0px -80px 0px' }
+    );
+    targets.forEach((t) => io.observe(t));
     return () => {
       clearTimeout(t);
-      io?.disconnect();
+      io.disconnect();
     };
   }, []);
 
