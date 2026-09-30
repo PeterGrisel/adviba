@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Map as MapIcon, MapPin, X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import { brand, region } from '@/data/configurator';
 import { useBrandTheme } from './BrandTheme';
+import { NLMapIcon } from './NLMapIcon';
 
 // Kaartbibliotheek pas laden als het paneel opent
 const RegionMap = dynamic(() => import('./RegionMap').then((m) => m.RegionMap), {
@@ -50,11 +51,15 @@ export function RegionMapPopover() {
         onFocus={prefetch}
         aria-expanded={open}
         aria-controls="regiokaart"
-        className="hidden items-center gap-1.5 rounded-full px-2 py-1 font-slab text-[13px] italic text-dark-fg/75 transition-colors hover:text-dark-fg lg:inline-flex"
+        className="group hidden items-center gap-2.5 rounded-xl px-2 py-1 text-left text-dark-fg/80 transition-colors hover:text-dark-fg lg:inline-flex"
       >
-        <MapPin className="h-3.5 w-3.5 text-accent-bright" strokeWidth={1.75} />
-        <span className="underline decoration-dark-fg/25 decoration-dotted underline-offset-4">
-          {brand.tagline}
+        <NLMapIcon className="h-8 w-7 flex-none text-dark-fg transition-transform duration-300 group-hover:scale-110" />
+        <span className="flex flex-col leading-tight">
+          <span className="font-slab text-[13px] italic">{brand.tagline}</span>
+          <span className="mt-0.5 inline-flex items-center gap-1 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-accent-bright">
+            Bekijk werkregio
+            <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" strokeWidth={2.5} />
+          </span>
         </span>
       </button>
       {/* Mobiel/tablet: icoonknop */}
@@ -64,10 +69,10 @@ export function RegionMapPopover() {
         onTouchStart={prefetch}
         aria-expanded={open}
         aria-controls="regiokaart"
-        aria-label={`Werkgebied: ${brand.tagline}`}
+        aria-label={`Bekijk werkregio: ${brand.tagline}`}
         className="grid h-10 w-10 place-items-center rounded-full border border-dark-line bg-dark-deep text-accent-bright transition-colors hover:border-accent-bright lg:hidden"
       >
-        <MapIcon className="h-4 w-4" strokeWidth={1.75} />
+        <NLMapIcon className="h-6 w-5 text-dark-fg" />
       </button>
 
       <AnimatePresence>
