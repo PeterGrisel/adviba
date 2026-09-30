@@ -11,10 +11,10 @@ export function Header() {
   const dim = (b: string) => (active === b ? '' : 'opacity-60');
   return (
     <header className="sticky top-0 z-30 border-b border-dark-line bg-dark text-dark-fg">
-      <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+      <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-3 px-4 sm:gap-4 sm:px-5 md:px-8">
         <a
           href="#"
-          className="flex items-center gap-3"
+          className="flex min-w-0 items-center gap-2.5 sm:gap-3"
           aria-label={`${brand.name} ${brand.suffix}, naar de homepage`}
         >
           <BrandMark className="h-10 w-12" variant={active} onDark />
@@ -25,7 +25,7 @@ export function Header() {
               </span>{' '}
               waal
             </span>
-            <span className="mt-0.5 flex items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.16em] md:text-[12px]">
+            <span className="mt-0.5 flex items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] md:text-[12px]">
               <span className={`text-[#f5a623] transition-opacity duration-500 ${dim('zonwering')}`}>Zonwering</span>
               <span className="text-dark-fg-muted/60">·</span>
               <span className={`text-brand-orange transition-opacity duration-500 ${dim('rolluiken')}`}>Rolluiken</span>
