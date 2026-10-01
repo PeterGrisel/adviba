@@ -18,7 +18,7 @@ const RegionMap = dynamic(() => import('./RegionMap').then((m) => m.RegionMap), 
   ),
 });
 
-/** "Van Heerewaarden tot Ewijk" in de header, opent een regiokaart. */
+/** "Van Dreumel tot Ewijk" in de header, opent een regiokaart. */
 export function RegionMapPopover() {
   const [open, setOpen] = useState(false);
   const { brand: active } = useBrandTheme();

@@ -28,9 +28,9 @@ export function Header() {
             <span className="mt-0.5 flex items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] md:text-[12px]">
               <span className={`text-[#f5a623] transition-opacity duration-500 ${dim('zonwering')}`}>Zonwering</span>
               <span className="text-dark-fg-muted/60">·</span>
-              <span className={`text-brand-orange transition-opacity duration-500 ${dim('rolluiken')}`}>Rolluiken</span>
+              <span className={`text-[#f5a623] transition-opacity duration-500 ${dim('rolluiken')}`}>Rolluiken</span>
               <span className="text-dark-fg-muted/60">·</span>
-              <span className={`text-brand-green transition-opacity duration-500 ${dim('horren')}`}>Horren</span>
+              <span className={`text-[#f5a623] transition-opacity duration-500 ${dim('horren')}`}>Horren</span>
             </span>
           </span>
         </a>

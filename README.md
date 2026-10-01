@@ -2,7 +2,7 @@
 
 Streekconfigurator voor de drie Maas en Waal-merken (`maasenwaalzonwering.nl`,
 `maasenwaalrolluiken.nl`, `maasenwaalhorren.nl`) — een initiatief van
-**ADviba**, specialist tussen Heerewaarden en Ewijk.
+**ADviba**, specialist tussen Dreumel en Ewijk.
 
 Bezoekers doorlopen in vijf stappen een configuratie en krijgen direct een
 indicatieve prijs. De demo draait volledig client-side; geen backend, geen
@@ -48,7 +48,7 @@ Requirements: Node 18+.
   terugkomen behoudt de stap en keuzes; "Start opnieuw" wist alles.
 - **Regionale sfeer** via een Waar-wij-thuis-zijn showcase met foto's uit
   Wikimedia Commons (CC BY-SA) en een werkgebied-strook met dorpen tussen
-  Heerewaarden en Ewijk.
+  Dreumel en Ewijk.
 - **Donker ADviba-footer** met amber CTA-band, service-links en telefoon /
   e-mail.
 - **Toegankelijkheid** — semantische HTML, keyboard-navigatie, zichtbare

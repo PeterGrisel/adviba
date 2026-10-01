@@ -8,6 +8,7 @@ import { brand } from '@/data/configurator';
 import { imageSrc, type ImageKey } from '@/lib/remoteImages';
 import bus from '@/public/media/adviba-bus.webp';
 import showroomFoto from '@/public/media/showroom-alec.jpg';
+import werkplaatsFoto from '@/public/media/showroom-werkplaats.jpg';
 
 interface Shot {
   id: string;
@@ -35,11 +36,12 @@ const shots: Shot[] = [
     showroom: true,
   },
   {
-    id: 'beneden-leeuwen',
-    caption: 'De Waal bij',
-    village: 'Beneden-Leeuwen',
-    image: 'waal-beneden-leeuwen',
-    credit: 'bertknot via Panoramio, CC BY-SA 3.0',
+    id: 'werkplaats',
+    caption: 'Werkplaats aan de',
+    village: 'Expeditieweg',
+    photo: werkplaatsFoto,
+    focus: '50% 70%',
+    alt: 'Showroom en werkplaats van adviba aan de Expeditieweg in Boven-Leeuwen, met de adviba-bus voor de deur',
   },
   {
     id: 'dreumel',

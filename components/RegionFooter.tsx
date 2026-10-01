@@ -89,7 +89,7 @@ export function RegionFooter({ children }: { children?: React.ReactNode }) {
 
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-dark-fg-muted">
                 Op zoek naar zonwering in huis of zonwering buiten zoals rolluiken of
-                screens? Als lokale streekspecialist tussen Heerewaarden en Ewijk zit{' '}
+                screens? Als lokale streekspecialist tussen Dreumel en Ewijk zit{' '}
                 <a
                   href={brand.website}
                   target="_blank"

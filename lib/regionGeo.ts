@@ -3,8 +3,6 @@
  * Dorpscentra, bij benadering; voor een regiokaart ruim nauwkeurig genoeg.
  */
 export const villageCoords: Record<string, [number, number]> = {
-  Heerewaarden: [5.395, 51.82],
-  Rossum: [5.334, 51.801],
   Alphen: [5.465, 51.822],
   Dreumel: [5.431, 51.846],
   Maasbommel: [5.529, 51.818],
@@ -22,10 +20,8 @@ export const villageCoords: Record<string, [number, number]> = {
   Hernen: [5.676, 51.839],
   Leur: [5.692, 51.824],
   Batenburg: [5.623, 51.822],
-  Wijchen: [5.725, 51.808],
   Winssen: [5.702, 51.878],
   Beuningen: [5.766, 51.861],
-  Weurt: [5.816, 51.856],
   Ewijk: [5.74, 51.874],
 };
 
@@ -33,8 +29,8 @@ export const villageCoords: Record<string, [number, number]> = {
 export const showroomCoord: [number, number] = [5.556, 51.889];
 
 export const regionBounds: [[number, number], [number, number]] = [
-  [5.31, 51.79],
-  [5.84, 51.905],
+  [5.41, 51.81],
+  [5.78, 51.905],
 ];
 
 /** Convexe omhullende (monotone chain) voor de werkgebied-vlak. */

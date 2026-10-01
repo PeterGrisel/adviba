@@ -30,7 +30,7 @@ const slides: Slide[] = [
     subLabel: 'Comfort voor elk seizoen',
     headlinePrefix: 'Van zon naar',
     headlineAccent: 'comfort.',
-    body: 'Screens, uitvalschermen en markiezen, geleverd en gemonteerd door adviba: jouw specialist tussen Heerewaarden en Ewijk.',
+    body: 'Screens, uitvalschermen en markiezen, geleverd en gemonteerd door adviba: jouw specialist tussen Dreumel en Ewijk.',
     image: imageSrc('waal-beneden-leeuwen'),
     colorClass: 'text-accent-bright',
     bgClass: 'bg-accent-bright',

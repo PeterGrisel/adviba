@@ -8,15 +8,16 @@ interface Props {
   onDark?: boolean;
 }
 
+/** Alle sub-merken in hetzelfde warme geel (wens adviba). */
 const SUN_COLORS: Record<BrandVariant, string> = {
   zonwering: '#F5A623',
-  rolluiken: '#E8611F',
-  horren: '#5AA847',
+  rolluiken: '#F5A623',
+  horren: '#F5A623',
 };
 
 /**
  * Maas en Waal huismerk — half zon achter huisdak.
- * Sun-kleur volgt het sub-merk. Icoon binnen het dak visualiseert
+ * Zon altijd warm geel. Icoon binnen het dak visualiseert
  * het product (zonluifel / rolluik-lamellen / horgaas + blaadje).
  */
 export function BrandMark({
@@ -80,7 +81,7 @@ export function BrandMark({
       )}
 
       {variant === 'horren' && (
-        // Hor — dun raamkozijn + fijn mesh-grid + klein blaadje in green
+        // Hor — dun raamkozijn + fijn mesh-grid + klein blaadje
         <g>
           <rect
             x="18"
@@ -105,7 +106,7 @@ export function BrandMark({
             <line x1="58" y1="55" x2="58" y2="93" />
             <line x1="66" y1="55" x2="66" y2="93" />
           </g>
-          {/* Blaadje in groen — accent rechts onder */}
+          {/* Blaadje, accent rechts onder */}
           <path
             d="M78 82 C 86 78, 92 82, 92 90 C 84 90, 78 88, 78 82 Z"
             fill={sun}

@@ -26,6 +26,8 @@ export interface ProjectPhoto {
 export const productTypes: Record<string, { product: string; label: BrandVariant }> = {
   screens: { product: 'Screens', label: 'zonwering' },
   screen: { product: 'Screens', label: 'zonwering' },
+  ritsscreens: { product: 'Ritsscreens', label: 'zonwering' },
+  rolgordijn: { product: 'Rolgordijn', label: 'zonwering' },
   markies: { product: 'Markies', label: 'zonwering' },
   knikarmscherm: { product: 'Knikarmscherm', label: 'zonwering' },
   zonwering: { product: 'Zonwering', label: 'zonwering' },
@@ -36,6 +38,7 @@ export const productTypes: Record<string, { product: string; label: BrandVariant
   biroll: { product: 'Biroll', label: 'horren' },
   horren: { product: 'Horren', label: 'horren' },
   hor: { product: 'Hor', label: 'horren' },
+  hordeur: { product: 'Hordeur', label: 'horren' },
 };
 
 /** Optionele extra info per bestandsnaam. */
@@ -78,6 +81,46 @@ export const projectDetails: Record<
     title: 'Rolluik voor de tuinkamer',
     alt: 'Zwart rolluik voor de glazen pui van een tuinkamer',
     order: 7,
+  },
+  'rolluiken-solar-somfy.jpg': {
+    title: 'Rolluiken en Biroll op zonne-energie',
+    alt: 'Witte rolluiken op zonne-energie van Somfy op een bakstenen gevel, met Biroll op de dakkapel',
+    order: 8,
+  },
+  'ritsscreens-markies.jpg': {
+    title: 'Ritsscreen en markies, op zonne-energie',
+    alt: 'Grijs ritsscreen voor een benedenraam en een gestreepte markies op een jaren 30-woning',
+    order: 9,
+  },
+  'hordeur-pendel-erfal.jpg': {
+    title: 'Pendelhordeur met schopplaat',
+    alt: 'Zwarte pendelhordeur van Erfal met metalen gaas en schopplaat in een bijkeuken',
+    order: 10,
+  },
+  'screens-witte-woning.jpg': {
+    title: 'Screens en rolluiken op een witte woning',
+    alt: 'Witte woning met donkere screens en rolluiken',
+    order: 11,
+  },
+  'rolluiken-solar-breed.jpg': {
+    title: 'Rolluiken op zonne-energie, 3,7 meter breed',
+    alt: 'Brede rolluiken op zonne-energie voor een moderne gevel',
+    order: 12,
+  },
+  'rolgordijn-erfal.jpg': {
+    title: 'Rolgordijn voor binnen',
+    alt: 'Zandkleurig rolgordijn van Erfal met cassette voor een raam, binnenzonwering',
+    order: 13,
+  },
+  'hor-inzet.jpg': {
+    title: 'Inzethor',
+    alt: 'Inzethor in een wit raam in een zwarte houten gevel',
+    order: 14,
+  },
+  'hordeur-pendel-binnen.jpg': {
+    title: 'Pendelhordeur, van binnenuit',
+    alt: 'Pendelhordeur van Erfal met schopplaat, gezien vanuit de woning',
+    order: 15,
   },
 };
 

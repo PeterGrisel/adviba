@@ -3,7 +3,7 @@ import type { Product, ProductId } from '@/lib/types';
 export const brand = {
   name: 'Maas en Waal',
   suffix: 'Zonwering · Rolluiken · Horren',
-  tagline: 'Van Heerewaarden tot Ewijk',
+  tagline: 'Van Dreumel tot Ewijk',
   founder: 'adviba',
   founderRole: 'Specialist uit de streek',
   domains: [
@@ -38,8 +38,6 @@ export const brand = {
 export const region = {
   name: 'Land van Maas en Waal',
   villages: [
-    'Heerewaarden',
-    'Rossum',
     'Alphen',
     'Dreumel',
     'Maasbommel',
@@ -57,10 +55,8 @@ export const region = {
     'Hernen',
     'Leur',
     'Batenburg',
-    'Wijchen',
     'Winssen',
     'Beuningen',
-    'Weurt',
     'Ewijk',
   ],
 };
@@ -422,7 +418,7 @@ export const copy = {
   intro: {
     title: 'Configureer jouw zonwering of rolluik',
     subtitle:
-      'Prijsindicatie in 2 minuten, voor iedereen tussen Heerewaarden en Ewijk.',
+      'Prijsindicatie in 2 minuten, voor iedereen tussen Dreumel en Ewijk.',
   },
   step1: {
     title: 'Wat wil je configureren?',
