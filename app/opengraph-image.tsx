@@ -23,8 +23,8 @@ export default function OgImage() {
         <div style={{ fontSize: 64, fontWeight: 700, letterSpacing: -1 }}>maas en waal</div>
         <div style={{ display: 'flex', gap: 24, marginTop: 12, fontSize: 30, fontWeight: 700 }}>
           <span style={{ color: '#f5a623' }}>ZONWERING</span>
-          <span style={{ color: '#e8611f' }}>ROLLUIKEN</span>
-          <span style={{ color: '#5aa847' }}>HORREN</span>
+          <span style={{ color: '#f5a623' }}>ROLLUIKEN</span>
+          <span style={{ color: '#f5a623' }}>HORREN</span>
         </div>
         <div style={{ marginTop: 56, fontSize: 44, lineHeight: 1.2, maxWidth: 900 }}>
           Bereken je prijs in 2 minuten, van Dreumel tot Ewijk.

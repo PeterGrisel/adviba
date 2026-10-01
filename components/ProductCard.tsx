@@ -9,8 +9,8 @@ import { productToBrand } from './BrandTheme';
 
 const tint: Record<BrandVariant, string> = {
   zonwering: 'bg-[#f5a623]/10',
-  rolluiken: 'bg-brand-orange/10',
-  horren: 'bg-brand-green/10',
+  rolluiken: 'bg-[#f5a623]/10',
+  horren: 'bg-[#f5a623]/10',
 };
 
 interface Props {

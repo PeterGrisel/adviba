@@ -43,8 +43,8 @@ const slides: Slide[] = [
     headlineAccent: 'privacy.',
     body: 'Rolluiken die je woning verduisteren, isoleren en beschermen. Op maat gemaakt door adviba, lokaal geïnstalleerd in Maas en Waal.',
     image: imageSrc('waaldijk-dreumel'),
-    colorClass: 'text-brand-orange',
-    bgClass: 'bg-brand-orange',
+    colorClass: 'text-accent-bright',
+    bgClass: 'bg-accent-bright',
   },
   {
     id: 'horren',
@@ -54,8 +54,8 @@ const slides: Slide[] = [
     headlineAccent: 'ongedierte.',
     body: 'Horren die passen bij elk raam of deur. Muggen buiten, daglicht binnen. adviba plaatst ze bij je thuis in de streek.',
     image: imageSrc('dreumelsche-waard'),
-    colorClass: 'text-brand-green',
-    bgClass: 'bg-brand-green',
+    colorClass: 'text-accent-bright',
+    bgClass: 'bg-accent-bright',
   },
 ];
 

@@ -47,21 +47,8 @@
   --font-slab: 'Roboto Slab', ui-serif, Georgia, serif;
 }
 
-/* Actief sub-merk — accent-tokens schakelen mee (zie BrandTheme.tsx).
- * `accent` is de donkere variant voor tekst/UI op cream; `accent-bright`
- * de logo-kleur voor vlakken en tekst op donker. */
-[data-brand='rolluiken'] {
-  --color-accent: 184 70 16; /* #b84610 */
-  --color-on-accent: 255 255 255;
-  --color-accent-soft: 247 181 143; /* #f7b58f */
-  --color-accent-bright: 232 97 31; /* #e8611f */
-}
-[data-brand='horren'] {
-  --color-accent: 53 122 38; /* #357a26 */
-  --color-on-accent: 255 255 255;
-  --color-accent-soft: 191 224 176; /* #bfe0b0 */
-  --color-accent-bright: 90 168 71; /* #5aa847 */
-}
+/* Alle sub-merken delen het warme geel (wens adviba); data-brand blijft
+ * staan voor het actieve product, maar wisselt geen kleur meer. */
 
 html,
 body {
