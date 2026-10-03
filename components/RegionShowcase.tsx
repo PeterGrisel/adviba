@@ -5,26 +5,24 @@ import Image, { type StaticImageData } from 'next/image';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { CalendarDays, Leaf, MapPin } from 'lucide-react';
 import { brand } from '@/data/configurator';
-import { imageSrc, type ImageKey } from '@/lib/remoteImages';
 import bus from '@/public/media/adviba-bus.webp';
 import showroomFoto from '@/public/media/showroom-alec.jpg';
 import werkplaatsFoto from '@/public/media/showroom-werkplaats.jpg';
+import busOnderweg from '@/public/media/bus-onderweg.jpg';
+import busHoogwerker from '@/public/media/bus-hoogwerker.jpg';
 
 interface Shot {
   id: string;
   caption: string;
   village: string;
-  image?: ImageKey;
-  /** lokale foto (i.p.v. Wikimedia) */
-  photo?: StaticImageData;
+  photo: StaticImageData;
   /** object-position, bv. om een persoon in beeld te houden */
   focus?: string;
   alt?: string;
-  credit?: string;
   showroom?: boolean;
 }
 
-/** Van de showroom langs de Waal naar het westen. Foto's: Wikimedia Commons. */
+/** Showroom, werkplaats en de bus onderweg: alles eigen beeld van adviba. */
 const shots: Shot[] = [
   {
     id: 'showroom',
@@ -44,18 +42,20 @@ const shots: Shot[] = [
     alt: 'Showroom en werkplaats van adviba aan de Expeditieweg in Boven-Leeuwen, met de adviba-bus voor de deur',
   },
   {
-    id: 'dreumel',
-    caption: 'Dorpstoren van',
-    village: 'Dreumel',
-    image: 'dreumel-kerk',
-    credit: 'Wikimedia Commons, CC BY-SA 4.0',
+    id: 'onderweg',
+    caption: 'Onderweg in',
+    village: 'Maas en Waal',
+    photo: busOnderweg,
+    focus: '40% 60%',
+    alt: 'De adviba-bus voor een woning met zonnepanelen, onderweg naar een klant',
   },
   {
-    id: 'dreumelsche-waard',
-    caption: 'Uiterwaarden bij',
-    village: 'Dreumelsche Waard',
-    image: 'dreumelsche-waard',
-    credit: 'Wikimedia Commons',
+    id: 'hoogwerker',
+    caption: 'Aan het werk met de',
+    village: 'hoogwerker',
+    photo: busHoogwerker,
+    focus: '30% 60%',
+    alt: 'adviba aan het werk met een hoogwerker bij een nieuwbouwwoning, de bus ervoor',
   },
 ];
 
@@ -83,16 +83,15 @@ export function RegionShowcase() {
           {shots.map((s) => (
             <figure
               key={s.id}
-              title={s.credit ? `Foto: ${s.credit}` : undefined}
               className="group relative aspect-[4/5] overflow-hidden rounded-card border border-line bg-surface"
             >
               <Image
-                src={s.photo ?? imageSrc(s.image!)}
+                src={s.photo}
                 alt={s.alt ?? `${s.caption} ${s.village}`}
                 fill
                 sizes="(min-width: 1024px) 270px, 50vw"
                 quality={70}
-                placeholder={s.photo ? 'blur' : 'empty'}
+                placeholder="blur"
                 className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
                 style={{ objectPosition: s.focus ?? 'center' }}
               />

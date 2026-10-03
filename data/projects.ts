@@ -29,6 +29,7 @@ export const productTypes: Record<string, { product: string; label: BrandVariant
   ritsscreens: { product: 'Ritsscreens', label: 'zonwering' },
   rolgordijn: { product: 'Rolgordijn', label: 'zonwering' },
   markies: { product: 'Markies', label: 'zonwering' },
+  markiezen: { product: 'Markiezen', label: 'zonwering' },
   knikarmscherm: { product: 'Knikarmscherm', label: 'zonwering' },
   zonwering: { product: 'Zonwering', label: 'zonwering' },
   uitvalscherm: { product: 'Uitvalscherm', label: 'zonwering' },
@@ -121,6 +122,71 @@ export const projectDetails: Record<
     title: 'Pendelhordeur, van binnenuit',
     alt: 'Pendelhordeur van Erfal met schopplaat, gezien vanuit de woning',
     order: 15,
+  },
+  'screens-veranda.jpg': {
+    title: 'Screen langs de veranda',
+    alt: 'Groot antraciet screen langs een glazen veranda in een aangelegde tuin',
+    order: 16,
+  },
+  'rolluiken-gevelbekleding.jpg': {
+    title: 'Rolluiken op een houten gevel',
+    alt: 'Twee witte rolluiken op een gevel met taupe gevelbekleding',
+    order: 17,
+  },
+  'screens-loods.jpg': {
+    title: 'Screens op een nieuwe schuurwoning',
+    alt: 'Drie antraciet screens op een zwarte houten gevel van een nieuwbouwschuur',
+    order: 18,
+  },
+  'screens-serre.jpg': {
+    title: 'Screens rondom de serre',
+    alt: 'Witte screens rondom een serre aan een witte woning',
+    order: 19,
+  },
+  'markiezen-woning.jpg': {
+    title: 'Markiezen op een rietgedekte woning',
+    alt: 'Twee zandkleurige markiezen boven de ramen van een bakstenen woning met rieten dak',
+    order: 20,
+  },
+  'rolluiken-dakramen.jpg': {
+    title: 'Rolluiken op de dakramen',
+    alt: 'Rolluiken op twee dakramen in het metalen dak van een tuinkamer',
+    order: 21,
+  },
+  'zonwering-appartementen.jpg': {
+    title: 'Zonwering op een appartementencomplex',
+    alt: 'Gestreepte uitvalschermen en een knikarmscherm op balkons van een appartementencomplex',
+    order: 22,
+  },
+  'screens-balkon.jpg': {
+    title: 'Screen op het balkon',
+    alt: 'Screen voor een balkon van een appartement, tijdens de montage',
+    order: 23,
+  },
+  'rolluik-dakkapel.jpg': {
+    title: 'Rolluik op de dakkapel',
+    alt: 'Wit rolluik op een dakkapel in een pannendak',
+    order: 24,
+  },
+  'screens-deur.jpg': {
+    title: 'Screen voor de buitendeur',
+    alt: 'Antraciet screen voor een buitendeur in een gele bakstenen gevel',
+    order: 25,
+  },
+  'rolluik-gevel.jpg': {
+    title: 'Rolluik in een bakstenen gevel',
+    alt: 'Wit rolluik voor een raam in een bakstenen kopgevel',
+    order: 26,
+  },
+  'screens-baksteen.jpg': {
+    title: 'Screen op een rode gevel',
+    alt: 'Antraciet screen voor een raam in een rode bakstenen gevel',
+    order: 27,
+  },
+  'markies-nieuwbouw.jpg': {
+    title: 'Markies op een nieuwbouwwoning',
+    alt: 'Markies boven een raam van een nieuwbouwwoning, net gemonteerd',
+    order: 28,
   },
 };
 
