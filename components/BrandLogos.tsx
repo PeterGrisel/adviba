@@ -1,14 +1,15 @@
 import Image from 'next/image';
 
 /** Merken die adviba levert en monteert (logo's van adviba.nl). */
-const logos = [
+const logos: { name: string; file: string; w: number; h: number; href?: string; size?: string }[] = [
   { name: 'Somfy', file: 'somfy', w: 268, h: 76, href: 'https://www.somfy.nl/experts/adviba-dreumel.html' },
   { name: 'Unilux', file: 'unilux', w: 278, h: 91, href: 'https://www.unilux.nl/dealers/57793/?pd=57793' },
   { name: 'VELUX', file: 'velux', w: 286, h: 100 },
   { name: 'Erfal', file: 'erfal', w: 245, h: 72, href: 'https://www.erfal.de/nl/dealer-vinden?q=druten&country=NL' },
   { name: 'Lewens Markisen', file: 'lewens', w: 247, h: 114 },
   { name: 'BiRoll', file: 'biroll', w: 261, h: 95 },
-  { name: 'By Michèl', file: 'bymichel', w: 216, h: 88 },
+  { name: 'Husol', file: 'husol', w: 320, h: 47, size: 'h-3.5 md:h-4' },
+  { name: 'SolFaction', file: 'solfaction', w: 300, h: 75 },
 ];
 
 export function BrandLogos() {
@@ -26,7 +27,7 @@ export function BrandLogos() {
               width={l.w}
               height={l.h}
               sizes="120px"
-              className="h-6 w-auto object-contain transition duration-300 md:h-7 md:opacity-80 md:grayscale md:group-hover:opacity-100 md:group-hover:grayscale-0"
+              className={`${l.size ?? 'h-6 md:h-7'} w-auto object-contain transition duration-300 md:opacity-80 md:grayscale md:group-hover:opacity-100 md:group-hover:grayscale-0`}
             />
           );
           const box =
