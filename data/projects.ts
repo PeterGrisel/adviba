@@ -28,6 +28,7 @@ export const productTypes: Record<string, { product: string; label: BrandVariant
   screen: { product: 'Screens', label: 'zonwering' },
   ritsscreens: { product: 'Ritsscreens', label: 'zonwering' },
   rolgordijn: { product: 'Rolgordijn', label: 'zonwering' },
+  jaloezieen: { product: 'Jaloezieën', label: 'zonwering' },
   markies: { product: 'Markies', label: 'zonwering' },
   markiezen: { product: 'Markiezen', label: 'zonwering' },
   knikarmscherm: { product: 'Knikarmscherm', label: 'zonwering' },
@@ -187,6 +188,31 @@ export const projectDetails: Record<
     title: 'Markies op een nieuwbouwwoning',
     alt: 'Markies boven een raam van een nieuwbouwwoning, net gemonteerd',
     order: 28,
+  },
+  'knikarmscherm-terras.jpg': {
+    title: 'Knikarmschermen boven het terras',
+    alt: 'Twee antraciet knikarmschermen boven het terras van een rode bakstenen woning met rolluiken',
+    order: 29,
+  },
+  'screens-tuinkamer.jpg': {
+    title: 'Screens op de tuinkamer',
+    alt: 'Antraciet screens op een tuinkamer met grijze dakpannen',
+    order: 30,
+  },
+  'knikarmscherm-tuin.jpg': {
+    title: 'Knikarmscherm met rolluiken erboven',
+    alt: 'Antraciet knikarmscherm boven het terras, met rolluiken op de verdieping',
+    order: 31,
+  },
+  'screens-aanbouw.jpg': {
+    title: 'Screen op de aanbouw',
+    alt: 'Groot grijs screen op een lichte aanbouw naast de achterdeur',
+    order: 32,
+  },
+  'jaloezieen-woonkamer.jpg': {
+    title: 'Houten jaloezieën in de woonkamer',
+    alt: 'Grijze houten jaloezieën voor een breed raam in een woonkamer',
+    order: 33,
   },
 };
 
